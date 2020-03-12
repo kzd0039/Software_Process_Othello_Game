@@ -49,7 +49,7 @@ class createTest(unittest.TestCase):
         correct = {'status': self.error2}
         
         self.setOperation(self.nominalOperation)
-        self.setSize(17)
+        self.setSize(5)
         result = create._create(self.inputDictionary)
         
         self.assertEqual(correct, result)
