@@ -46,7 +46,7 @@ class createTest(unittest.TestCase):
         correct = {'status':'error: light/blank/dark should be integers only'}
         
         self.setOperation(self.nominalOperation)
-        self.setLight('b')
+        self.setLight(1.2)
         result = create._create(self.inputDictionary)
         
         self.assertEqual(correct, result)
