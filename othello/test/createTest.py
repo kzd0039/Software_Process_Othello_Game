@@ -15,10 +15,14 @@ class createTest(unittest.TestCase):
         self.nominalDark = 2
         self.nominalBlank = 0
         self.nominalSize = 8
+        self.nominalOperation = 'create'
         self.inputDictionary = {}
         
     def tearDown(self):
         self.inputDictionary = {}
+    
+    def setOperation(self, op):
+        self.inputDictionary['op'] = op
     
     def setLight(self, light):
         self.inputDictionary['light'] = light
@@ -40,6 +44,7 @@ class createTest(unittest.TestCase):
         correct['status'] = 'ok'
         correct['integrity'] = ''
         
+        self.setOperation(self.nominalOperation)
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
         
