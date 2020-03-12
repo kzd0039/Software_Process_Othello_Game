@@ -40,7 +40,10 @@ def _create(parms):
         if blank > 9 or blank < 0:
             return {'status': error2}
         
-   
+    if 'size' in parms:
+        size = parms['size']
+        if not(isinstance(size, int)):
+            return {'status': error1}
     
         
         
