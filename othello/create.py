@@ -25,6 +25,8 @@ def _create(parms):
             return {'status': error1}
         if light > 9 or light < 0:
             return {'status': error2}
+    if 'dark' in parms:
+        pass
         
         
     
