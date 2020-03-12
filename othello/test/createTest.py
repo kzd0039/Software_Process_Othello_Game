@@ -49,7 +49,7 @@ class createTest(unittest.TestCase):
         correct = {'status': self.error1}
         
         self.setOperation(self.nominalOperation)
-        self.setDark('d')
+        self.setDark(1.3434)
         result = create._create(self.inputDictionary)
         
         self.assertEqual(correct, result)
