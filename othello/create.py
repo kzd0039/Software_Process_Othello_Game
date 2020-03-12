@@ -37,7 +37,8 @@ def _create(parms):
         blank = parms['blank']
         if not(isinstance(blank, int)):
             return {'status': error1}
-        
+        if blank > 9 or blank < 0:
+            return {'status': error2}
         
         
     
