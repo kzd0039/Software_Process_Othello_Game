@@ -49,7 +49,9 @@ class createTest(unittest.TestCase):
         correct = {'status': self.error3}
         
         self.setOperation(self.nominalOperation)
-        self.setDark(1)
+        self.setLight(2)
+        self.setDark(3)
+        self.setBlank(3)
         result = create._create(self.inputDictionary)
         
         self.assertEqual(correct, result)

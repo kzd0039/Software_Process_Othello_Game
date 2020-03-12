@@ -36,6 +36,8 @@ def _create(parms):
             return {'status': error2}
         if dark == result['tokens']['light']:
             return {'status': error3}
+        #overwrite the value of dark
+        result['tokens']['dark'] = dark
         
         
     if 'blank' in parms:
