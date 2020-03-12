@@ -7,5 +7,11 @@
 '''
 
 def _create(parms):
-    result = {'create': 'create stub'}
+    #new a result dictionary to store the output
+    result = {'board':[]
+              'tokens':{'light': None, 'dark': None, 'blank': None}
+              'status': 'ok'
+              'integrity': ''}
+    
+    #return result to universe
     return result
