@@ -40,7 +40,7 @@ class createTest(unittest.TestCase):
     def test100_010(self):
         correct = {}
         correct['board'] = []
-        correct['tokens'] = {'light': None, 'dark': None, 'blank': None}
+        correct['tokens'] = {'light': 1, 'dark': 2, 'blank': 0}
         correct['status'] = 'ok'
         correct['integrity'] = ''
         
