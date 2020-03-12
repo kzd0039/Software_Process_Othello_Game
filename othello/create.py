@@ -30,6 +30,8 @@ def _create(parms):
         dark = parms['dark']
         if not(isinstance(dark, int)):
             return {'status': error1}
+        if dark > 9 or dark < 0:
+            return {'status': error2}
         
         
     
