@@ -46,10 +46,11 @@ class createTest(unittest.TestCase):
 #         correct['tokens'] = {'light': 1, 'dark': 2, 'blank': 0}
 #         correct['status'] = 'ok'
 #         correct['integrity'] = ''
-        correct = {'status': self.error2}
+        correct = {'status': self.error3}
         
         self.setOperation(self.nominalOperation)
-        self.setSize(5)
+        self.setBlank(5)
+        self.setDark(5)
         result = create._create(self.inputDictionary)
         
         self.assertEqual(correct, result)
