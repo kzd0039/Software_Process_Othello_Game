@@ -45,6 +45,7 @@ class createTest(unittest.TestCase):
         correct['integrity'] = ''
         
         self.setOperation(self.nominalOperation)
+        self.setLight('b')
         result = create._create(self.inputDictionary)
         
         self.assertEqual(correct, result)

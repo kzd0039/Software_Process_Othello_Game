@@ -7,19 +7,19 @@
 '''
 
 def _create(parms):
-    #new a result dictionary to store the output
+    #new a result dictionary to store the output and set all the default value
     result = {'board':[],
               'tokens':{'light': 1, 'dark': 2, 'blank': 0},
               'status': 'ok',
               'integrity': ''}
     
     #define error messages
-    error1 = 'invalid input'
-    error2 = 'number out of bounds'
-    error3 = 'integers only'
-    error4 = 'light/blank/dark should be distinct'
+    error1 = 'error: input should be integers only'
+    error2 = 'error: number out of bounds'
+    error3 = 'error: light/blank/dark should be distinct'
     
-    #validate input
+    
+            
     
     #return result to universe
     return result
