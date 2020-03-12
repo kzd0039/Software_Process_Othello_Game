@@ -47,7 +47,15 @@ def _create(parms):
         if size > 16 or size < 6:
             return {'status': error2}
         
-    
+    #check if the value of light/dark/blank is distinct
+    try:
+        light = parms['light']
+        dark = parms['dark']
+        blank = parms['blank']
+        if light ==  dark or light == blank or dark == blank:
+            return {'status': error3}
+    except:
+        pass
         
         
     
