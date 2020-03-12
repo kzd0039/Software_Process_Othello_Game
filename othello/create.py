@@ -18,8 +18,10 @@ def _create(parms):
     error2 = 'error: number out of bounds'
     error3 = 'error: light/blank/dark should be distinct'
     
-    
-            
+    #validate input
+    if 'light' in parms:
+        if not(isinstance(parms['light'], int)):
+            return {'status': error1}
     
     #return result to universe
     return result
