@@ -14,14 +14,16 @@ def _create(parms):
               'integrity': ''}
     
     #define error messages
-    error1 = 'error: light/blank/dark should be integers only'
-    error2 = 'error: number out of bounds'
-    error3 = 'error: light/blank/dark should be distinct'
+    error1 = 'error: value of light/blank/dark should be integers only'
+    error2 = 'error: value of number out of bounds'
+    error3 = 'error: value of light/blank/dark should be distinct'
     
     #validate input
     if 'light' in parms:
-        if not(isinstance(parms['light'], int)):
+        light = parms['light']
+        if not(isinstance(light, int)):
             return {'status': error1}
+        
         
     
     #return result to universe
