@@ -42,18 +42,20 @@ class createTest(unittest.TestCase):
     
     
     def test100_010(self):
-#         correct = {}
-#         correct['board'] = []
-#         correct['tokens'] = {'light': 1, 'dark': 2, 'blank': 0}
-#         correct['status'] = 'ok'
-#         correct['integrity'] = ''
-        correct = {'status': self.error4}
+        correct = {}
+        correct['board'] = [0,0,0,0,0,0,
+                            0,0,0,0,0,0,
+                            0,0,1,2,0,0,
+                            0,0,2,1,0,0,
+                            0,0,0,0,0,0,
+                            0,0,0,0,0,0]
+        correct['tokens'] = {'light': 1, 'dark': 2, 'blank': 0}
+        correct['status'] = 'ok'
+        correct['integrity'] = ''
+            
         
         self.setOperation(self.nominalOperation)
-        self.setLight(2)
-        self.setDark(3)
-        self.setBlank(4)
-        self.setSize(7)
+        self.setSize(6)
         result = create._create(self.inputDictionary)
         
         self.assertEqual(correct, result)

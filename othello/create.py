@@ -29,6 +29,7 @@ def _create(parms):
         #overwrite the value of light
         result['tokens']['light'] = light
         
+        
     if 'dark' in parms:
         dark = parms['dark']
         if not(isinstance(dark, int)):
@@ -60,6 +61,9 @@ def _create(parms):
             return {'status': error2}
         if size % 2 != 0:
             return {'status': error4}
+        #overwrite the value of board
+     
+        
         
         
     #return result to universe
