@@ -60,6 +60,24 @@ class createTest(unittest.TestCase):
         
         self.assertEqual(correct, result)
         
+    def test100_020(self):
+        correct = {}
+        correct['board'] = [0,0,0,0,0,0,0,
+                            0,0,0,0,0,0,0,
+                            0,0,0,1,2,0,0,
+                            0,0,0,2,1,0,0,
+                            0,0,0,0,0,0,0,
+                            0,0,0,0,0,0,0]
+        correct['tokens'] = {'light': 1, 'dark': 2, 'blank': 0}
+        correct['status'] = 'ok'
+        correct['integrity'] = ''
+            
+        
+        self.setOperation(self.nominalOperation)
+        self.setSize(6)
+        result = create._create(self.inputDictionary)
+        
+        self.assertEqual(correct, result)
         
         
         
