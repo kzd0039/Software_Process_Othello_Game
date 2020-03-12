@@ -17,6 +17,7 @@ def _create(parms):
     error1 = 'error: value of light/blank/dark should be integers only'
     error2 = 'error: value of light/blank/dark out of bounds'
     error3 = 'error: value of light/blank/dark should be distinct'
+    error4 = 'error: value of size should be even'
     
     #validate input
     if 'light' in parms:
@@ -48,6 +49,8 @@ def _create(parms):
             return {'status': error2}
         if blank == result['tokens']['dark'] or blank == result['tokens']['light']:
             return {'status': error3}
+        #overwrite the value of blank
+        result['tokens']['blank'] = blank
         
     if 'size' in parms:
         size = parms['size']
@@ -55,6 +58,8 @@ def _create(parms):
             return {'status': error1}
         if size > 16 or size < 6:
             return {'status': error2}
+      
+        
         
     #return result to universe
     return result

@@ -19,6 +19,7 @@ class createTest(unittest.TestCase):
         self.error1 = 'error: value of light/blank/dark should be integers only'
         self.error2 = 'error: value of light/blank/dark out of bounds'
         self.error3 = 'error: value of light/blank/dark should be distinct'
+        self.error4 = 'error: value of size should be even'
         self.inputDictionary = {}
         
     def tearDown(self):
@@ -46,12 +47,13 @@ class createTest(unittest.TestCase):
 #         correct['tokens'] = {'light': 1, 'dark': 2, 'blank': 0}
 #         correct['status'] = 'ok'
 #         correct['integrity'] = ''
-        correct = {'status': self.error3}
+        correct = {'status': self.error4}
         
         self.setOperation(self.nominalOperation)
         self.setLight(2)
         self.setDark(3)
-        self.setBlank(3)
+        self.setBlank(4)
+        self.setSize(7)
         result = create._create(self.inputDictionary)
         
         self.assertEqual(correct, result)
