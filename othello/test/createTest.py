@@ -76,7 +76,7 @@ class createTest(unittest.TestCase):
             
         
         self.setOperation(self.nominalOperation)
-        self.setSize(6)
+        self.setSize(self.nominalSize)
         result = create._create(self.inputDictionary)
         
         self.assertEqual(correct, result)
