@@ -46,6 +46,8 @@ def _create(parms):
             return {'status': error1}
         if blank > 9 or blank < 0:
             return {'status': error2}
+        if blank == result['tokens']['dark'] or blank == result['tokens']['light']:
+            return {'status': error3}
         
     if 'size' in parms:
         size = parms['size']
