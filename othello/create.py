@@ -59,7 +59,7 @@ def _create(parms):
         if size > 16 or size < 6:
             return {'status': error2}
         if size % 2 != 0:
-            return {'status': error3}
+            return {'status': error4}
         
         
     #return result to universe
