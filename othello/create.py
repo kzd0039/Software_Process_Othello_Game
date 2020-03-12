@@ -5,6 +5,8 @@
     Modified on Mar 12, 2020
     @author: Kun Ding
 '''
+import hashlib
+
 
 def _create(parms):
     #new a result dictionary to store the output and set all the default value
@@ -75,7 +77,10 @@ def _create(parms):
     
     
     #calculate the integrity
-   
+    string = ().join(str(x) for x in result['board']) 
+    string = string + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(dark)
+    
+    result['integrity'] = hashlib.sha256(string.encode()).hexdigest()
     
         
     #return result to universe
