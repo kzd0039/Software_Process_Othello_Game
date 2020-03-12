@@ -14,7 +14,7 @@ def _create(parms):
               'integrity': ''}
     
     #define error messages
-    error1 = 'error: input should be integers only'
+    error1 = 'error: light/blank/dark should be integers only'
     error2 = 'error: number out of bounds'
     error3 = 'error: light/blank/dark should be distinct'
     

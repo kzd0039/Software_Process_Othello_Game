@@ -38,11 +38,12 @@ class createTest(unittest.TestCase):
     
     
     def test100_010(self):
-        correct = {}
-        correct['board'] = []
-        correct['tokens'] = {'light': 1, 'dark': 2, 'blank': 0}
-        correct['status'] = 'ok'
-        correct['integrity'] = ''
+#         correct = {}
+#         correct['board'] = []
+#         correct['tokens'] = {'light': 1, 'dark': 2, 'blank': 0}
+#         correct['status'] = 'ok'
+#         correct['integrity'] = ''
+        correct = {'status':'error: light/blank/dark should be integers only'}
         
         self.setOperation(self.nominalOperation)
         self.setLight('b')
