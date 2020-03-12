@@ -8,9 +8,9 @@
 
 def _create(parms):
     #new a result dictionary to store the output
-    result = {'board':[]
-              'tokens':{'light': None, 'dark': None, 'blank': None}
-              'status': 'ok'
+    result = {'board':[],
+              'tokens':{'light': None, 'dark': None, 'blank': None},
+              'status': 'ok',
               'integrity': ''}
     
     #return result to universe
