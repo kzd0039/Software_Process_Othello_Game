@@ -33,6 +33,11 @@ def _create(parms):
         if dark > 9 or dark < 0:
             return {'status': error2}
         
+    if 'blank' in parms:
+        blank = parms['blank']
+        if not(isinstance(blank, int)):
+            return {'status': error1}
+        
         
     
     #return result to universe
