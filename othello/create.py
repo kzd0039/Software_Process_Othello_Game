@@ -62,10 +62,10 @@ def _create(parms):
         if size % 2 != 0:
             return {'status': error4}
         #overwrite the value of board
-        light = result['light']
-        dark = result['dark']
-        blank = result['blank']
-        size = result['size']
+        light = result['tokens']['light']
+        dark = result['tokens']['dark']
+        blank = result['tokens']['blank']
+        size = result['tokens']['size']
         
         result['board'] = [blank]*size
         index_light= ((size // 2) - 1) * size + size // 2 - 1
