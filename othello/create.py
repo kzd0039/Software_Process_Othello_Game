@@ -71,7 +71,7 @@ def _create(parms):
         result['board'][index_light] = light
         result['board'][index_light + 1] = dark
         result['board'][index_light + size] = dark
-        result['board'][index_light + size + 1] = dark
+        result['board'][index_light + size + 1] = light
         
         
         
