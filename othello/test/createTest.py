@@ -15,7 +15,6 @@ class createTest(unittest.TestCase):
         self.nominalDark = 2
         self.nominalBlank = 0
         self.nominalSize = 8
-        self.nominalOperation = 'create'
         self.error1 = 'error: value of light/blank/dark should be integers only'
         self.error2 = 'error: value of light/blank/dark out of bounds'
         self.error3 = 'error: value of light/blank/dark should be distinct'
@@ -24,9 +23,6 @@ class createTest(unittest.TestCase):
         
     def tearDown(self):
         self.inputDictionary = {}
-    
-    def setOperation(self, op):
-        self.inputDictionary['op'] = op
     
     def setLight(self, light):
         self.inputDictionary['light'] = light
@@ -41,44 +37,26 @@ class createTest(unittest.TestCase):
         self.inputDictionary['size'] = size
     
     
+        
     def test100_010(self):
-        correct = {}
-        correct['board'] = [0,0,0,0,0,0,
-                            0,0,0,0,0,0,
-                            0,0,1,2,0,0,
-                            0,0,2,1,0,0,
-                            0,0,0,0,0,0,
-                            0,0,0,0,0,0]
-        correct['tokens'] = {'light': 1, 'dark': 2, 'blank': 0}
-        correct['status'] = 'ok'
-        correct['integrity'] = ''
-            
-        
-        self.setOperation(self.nominalOperation)
-        self.setSize(6)
+        correct = { 'board': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 6, 5, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 5, 6, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 
+                    'tokens': {'light': 6, 'dark': 5, 'blank': 1}, 
+                    'status': 'ok', 
+                    'integrity': 'd0f18c5b412ab1dbf89da19baa33cc35f4a7dd0619ce7b7dcb2381d2cb14a412'}
+        self.setLight(6)
+        self.setDark(5)
+        self.setBlank(1)
+        self.setSize(10)
         result = create._create(self.inputDictionary)
-        
-        self.assertEqual(correct, result)
-        
-    def test100_020(self):
-        correct = {}
-        correct['board'] = [0,0,0,0,0,0,0,0,
-                            0,0,0,0,0,0,0,0,
-                            0,0,0,0,0,0,0,0,
-                            0,0,0,1,2,0,0,0,
-                            0,0,0,2,1,0,0,0,
-                            0,0,0,0,0,0,0,0,
-                            0,0,0,0,0,0,0,0,
-                            0,0,0,0,0,0,0,0]
-        correct['tokens'] = {'light': 1, 'dark': 2, 'blank': 0}
-        correct['status'] = 'ok'
-        correct['integrity'] = ''
-            
-        
-        self.setOperation(self.nominalOperation)
-        self.setSize(self.nominalSize)
-        result = create._create(self.inputDictionary)
-        
         self.assertEqual(correct, result)
         
         
