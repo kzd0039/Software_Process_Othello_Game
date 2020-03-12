@@ -10,7 +10,7 @@ import unittest
 import othello.create as create
 
 class createTest(unittest.TestCase):
-    def setup(self):
+    def setUp(self):
         self.nominalLight = 1
         self.nominalDark = 2
         self.nominalBlank = 0
@@ -44,7 +44,7 @@ class createTest(unittest.TestCase):
         correct['status'] = 'ok'
         correct['integrity'] = ''
         
-        self.setOperation('create')
+        self.setOperation(self.nominalOperation)
         result = create._create(self.inputDictionary)
         
         self.assertEqual(correct, result)
