@@ -23,6 +23,8 @@ def _create(parms):
         light = parms['light']
         if not(isinstance(light, int)):
             return {'status': error1}
+        if light > 9 or light < 0:
+            return {'status': error2}
         
         
     
