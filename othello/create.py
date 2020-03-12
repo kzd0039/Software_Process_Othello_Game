@@ -15,7 +15,7 @@ def _create(parms):
     
     #define error messages
     error1 = 'error: value of light/blank/dark should be integers only'
-    error2 = 'error: value of number out of bounds'
+    error2 = 'error: value of light/blank/dark out of bounds'
     error3 = 'error: value of light/blank/dark should be distinct'
     
     #validate input
