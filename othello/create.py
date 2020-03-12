@@ -65,7 +65,6 @@ def _create(parms):
         light = result['tokens']['light']
         dark = result['tokens']['dark']
         blank = result['tokens']['blank']
-        size = result['tokens']['size']
         
         result['board'] = [blank]*size
         index_light= ((size // 2) - 1) * size + size // 2 - 1
