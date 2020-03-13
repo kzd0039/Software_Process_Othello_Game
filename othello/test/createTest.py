@@ -124,7 +124,7 @@ class createTest(unittest.TestCase):
                              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
                              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
                              1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 
-                    'tokens': {'light': 9, 'dark': 5, 'blank': 1}, 
+                    'tokens': {'light': 0, 'dark': 5, 'blank': 1}, 
                     'status': 'ok', 
                     'integrity': '723c769319c6529cf8520336232a9e5d281be77df1455c6ceb10a5d1d4733236'}
         self.setLight('0')
