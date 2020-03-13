@@ -5,6 +5,9 @@
 
 
 import hashlib
+
+
+
 #hashlib
 a = hashlib.sha224(b"Nobody inspects the spammish repetition").hexdigest()
 print(a)
@@ -27,3 +30,11 @@ print(b)
 c = str(a)
 print(c)
 print(type(c))
+
+
+#dictionary
+
+a = {'a':1, 'b':2}
+b = {'b':2, 'a':1}
+
+print(a == b)

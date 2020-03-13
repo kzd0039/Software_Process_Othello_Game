@@ -12,7 +12,7 @@ def _create(parms):
     #New an empty result dictionary to store the output
     result = {}
     #Set the default value of 'light', 'dark', 'blank' to 1, 2, 0 respectively
-    result['tokens'] = { 'light': 1, 'dark': 2, 'blank': 0}
+    result['tokens'] = { light': 1, 'dark': 2, 'blank': 0}
     
     
     #Define error messages
@@ -89,7 +89,7 @@ def _create(parms):
     #Construct 'board' with all 'blank' tokens
     result['board'] = [blank]* (size ** 2)
     #Calculate the index of the four tokens in the center of the board
-    left_top = (size ** 2)//2 - 1
+    left_top = (size ** 2)//2 - size//2 - 1
     right_top = left_top + 1
     left_bottom = left_top + size
     right_bottom = left_bottom + 1
