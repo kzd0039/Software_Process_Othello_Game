@@ -24,10 +24,10 @@ def _create(parms):
     
     #Validate input
     if 'light' in parms:
-        #If value of 'light' is not integer, return corresponding error message
         try:
             light = int(parms['light'])
         except:
+        #If value of 'light' is not integer, return corresponding error message
             return {'status': ERROR01}
         #If value of 'light' is not in range [0,9], return corresponding error message
         if light > 9 or light < 0:
@@ -37,10 +37,10 @@ def _create(parms):
         
         
     if 'dark' in parms:
-        #If value of 'dark' is not integer, return corresponding error message
         try:
             dark = int(parms['dark'])
         except:
+        #If value of 'dark' is not integer, return corresponding error message
             return {'status': ERROR01}
         #If value of 'dark' is not in range [0,9], return corresponding error message 
         if dark > 9 or dark < 0:
@@ -53,10 +53,10 @@ def _create(parms):
         
         
     if 'blank' in parms:
-        #If value of 'blank' is not integer, return corresponding error message
         try:
             blank = int(parms['blank'])
         except:
+        #If value of 'blank' is not integer, return corresponding error message
             return {'status': ERROR01}
         #If value of 'blank' is not in range [0,9], return corresponding error message 
         if blank > 9 or blank < 0:
@@ -69,9 +69,10 @@ def _create(parms):
         
         
     if 'size' in parms:
-        size = parms['size']
+        try:  
+            size = int(parms['size'])
+        except:
         #If value of 'size' is not integer, return corresponding error message
-        if not(isinstance(size, int)):
             return {'status': ERROR01}
         #If value of 'size' is not in range [6,16], return corresponding error message
         if size > 16 or size < 6:

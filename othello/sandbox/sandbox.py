@@ -63,6 +63,6 @@ for num in l2:
 
 
 
-print(int('-10.1'))
+
 
 
