@@ -38,3 +38,31 @@ a = {'a':1, 'b':2}
 b = {'b':2, 'a':1}
 
 print(a == b)
+
+#determine if the input string is integer
+i = '-5.5'
+j = float(i)
+
+k = '5.5'
+z = float(k)
+
+d = '5'
+e = float(d)
+
+print(j - int(j) == 0)
+print(z - int(z) == 0)
+print(e - int(e) == 0)
+
+
+l = [str(x) for x in range(0,17)]
+l2 = ['0', '1','2','3','4','5.00000000001','6','7','8','9','10','11','12','13','14','15','16']
+for num in l2:
+    temp = float(num)
+    if temp - int(temp) == 0:
+        print(True)
+
+
+
+print(int('-10.1'))
+
+
