@@ -4,6 +4,9 @@
     
     Modified on Mar 12, 2020
     @author: Kun Ding
+    
+    Modified on Mar 13, 2020
+    @author: Kun Ding
 '''
 
 import unittest
@@ -39,41 +42,35 @@ class createTest(unittest.TestCase):
     #100 create
     #    Desired level of confidence:    boundary value analysis
     #    Input-output Analysis
-    #        inputs:        
-    #                    parms['light'] -> integer .GE.0 .LE.9 
-    #        outputs:    float .GT. 0 .LE. 1.0
+    #        inputs -> dictionary:  
+    #                    key        value
+    #                    'light' -> integer .GE.0 .LE.9, optional, defaulting to 1, arrives unvalidated 
+    #                    'dark'  -> integer .GE.0 .LE.9, optional,  defaulting to 2, arrives unvalidated 
+    #                    'blank' -> integer .GE.0 .LE.9, optional,  defaulting to 0, arrives unvalidated 
+    #                    'size'  -> even integer .GE.6 .LE.16, optional,  defaulting to 8, arrives unvalidated 
+    #        outputs -> dictionary:
+    #                    key        value
+    #                    'board' -> list of integers,
+    #                    'tokens' -> dictionary
+    #                                  key       value
+    #                                  'light' -> The integer value specified by the light parameter
+    #                                  'dark'  -> The integer value specified by the dark parameter
+    #                                  'blank' -> The integer value specified by the blank parameter
+    #                    'status' -> string, value = 'ok'
+    #                    'integrity' -> sha256 hash hexdigest of string formed by 
+    #                                   concatenating the string value of each of the playing surface cells in column-major order
+    #                                   followed by by the string "/<light>/<dark>/<blank>/<next_player>"
+    #                                   <light> is the value specified by the light parameter        
+    #                                   <dark> is the value specified by the dark parameter        
+    #                                   <blank> is the value specified by the blank parameter        
+    #                                   <next_player> At creation, <next_player> is the value associated with the dark parameter.        
     #    Happy path analysis:
-    #       n:       nominal value    n=6
-    #                low bound        n=3
-    #        t:      nominal value    t=1.4398
-    #                low bound        t>0.0
-    #        tails:  value 1          tails = 1
-    #                value 2          tails = 2
-    #                missing tails
-    #        output:
-    #                The output is an interaction of t x tails x n:
-    #                    nominal t, 1 tail
-    #                    nominal t, 2 tails
-    #                    low n, low t, 1 tail
-    #                    low n, low t, 2 tails
-    #                    high n, low t, 1 tail
-    #                    high n, low t, 2 tails
-    #                    low n, high t, 1 tail
-    #                    low n, high t, 2 tails
-    #                    high n, high t, 1 tail
-    #                    high n, high t, 2 tails
-    #                    nominal t, default tails
+    #      
     #    Sad path analysis:
-    #        n:      missing n
-    #                out-of-bound n   n<3
-    #                non-integer n    n = 2.5
-    #        t:      missing t
-    #                out-of-bounds n  t<0.0
-    #                non-numeric t    t="abc"
-    #        tails:  invalid tails    tails = 3
     #
-    # Happy path
-        
+    
+    
+    # Happy path   
     def test100_010(self):
         correct = { 'board':[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
                              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
@@ -88,10 +85,10 @@ class createTest(unittest.TestCase):
                     'tokens': {'light': 6, 'dark': 5, 'blank': 1}, 
                     'status': 'ok', 
                     'integrity': 'd0f18c5b412ab1dbf89da19baa33cc35f4a7dd0619ce7b7dcb2381d2cb14a412'}
-        self.setLight(6)
-        self.setDark(5)
-        self.setBlank(1)
-        self.setSize(10)
+        self.setLight('6')
+        self.setDark('5')
+        self.setBlank('1')
+        self.setSize('10')
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
         
