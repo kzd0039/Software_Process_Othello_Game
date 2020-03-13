@@ -18,10 +18,10 @@ class createTest(unittest.TestCase):
         self.nominalDark = 2
         self.nominalBlank = 0
         self.nominalSize = 8
-        self.error1 = 'error: value of light/blank/dark should be integers only'
+        self.error1 = 'error: value of light/blank/dark must be integers only'
         self.error2 = 'error: value of light/blank/dark out of bounds'
-        self.error3 = 'error: value of light/blank/dark should be distinct'
-        self.error4 = 'error: value of size should be even'
+        self.error3 = 'error: value of light/blank/dark must be distinct'
+        self.error4 = 'error: value of size must be even'
         self.inputDictionary = {}
         
     def tearDown(self):
@@ -91,10 +91,47 @@ class createTest(unittest.TestCase):
         self.setSize('10')
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
+    
+    def test100_020(self):
+        correct = { 'board':[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 9, 5, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 5, 9, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 
+                    'tokens': {'light': 9, 'dark': 5, 'blank': 1}, 
+                    'status': 'ok', 
+                    'integrity': '723c769319c6529cf8520336232a9e5d281be77df1455c6ceb10a5d1d4733236'}
+        self.setLight('9')
+        self.setDark('5')
+        self.setBlank('1')
+        self.setSize('10')
+        result = create._create(self.inputDictionary)
+        self.assertEqual(correct, result)    
         
         
+    #Sad path
+    def test100_900(self):
+        correct = {'status': self.error2}
+        self.setLight('10')
+        result = create._create(self.inputDictionary)
+        self.assertEqual(correct, result)
         
+    def test100_901(self):
+        correct = {'status': self.error2}
+        self.setLight('-1')
+        result = create._create(self.inputDictionary)
+        self.assertEqual(correct, result)
         
+    def test100_902(self):
+        correct = {'status': self.error1}
+        self.setLight('w')
+        result = create._create(self.inputDictionary)
+        self.assertEqual(correct, result)
         
         
         

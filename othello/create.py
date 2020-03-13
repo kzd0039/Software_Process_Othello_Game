@@ -16,10 +16,10 @@ def _create(parms):
     
     
     #Define error messages
-    ERROR01 = 'error: value of light/blank/dark should be integers only'
+    ERROR01 = 'error: value of light/blank/dark must be integers only'
     ERROR02 = 'error: value of light/blank/dark out of bounds'
-    ERROR03 = 'error: value of light/blank/dark should be distinct'
-    ERROR04 = 'error: value of size should be even'
+    ERROR03 = 'error: value of light/blank/dark must be distinct'
+    ERROR04 = 'error: value of size must be even'
     
     
     #Validate input
