@@ -310,7 +310,7 @@ class createTest(unittest.TestCase):
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)  
         
-    def test100_51(self):
+    def test100_051(self):
         correct = { 'board':[5, 5, 5, 5, 5, 5,
                              5, 5, 5, 5, 5, 5,
                              5, 5, 3, 4, 5, 5,
@@ -327,7 +327,7 @@ class createTest(unittest.TestCase):
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
         
-    def test100_52(self):
+    def test100_052(self):
         correct = { 'board':[5, 5, 5, 5, 5, 5, 5, 5,
                              5, 5, 5, 5, 5, 5, 5, 5,
                              5, 5, 5, 5, 5, 5, 5, 5,
@@ -345,7 +345,7 @@ class createTest(unittest.TestCase):
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
     
-    def test100_60(self):
+    def test100_060(self):
         correct = { 'board':[0, 0, 0, 0, 0, 0, 0, 0,
                              0, 0, 0, 0, 0, 0, 0, 0,
                              0, 0, 0, 0, 0, 0, 0, 0,
@@ -360,7 +360,7 @@ class createTest(unittest.TestCase):
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
         
-    def test100_60(self):
+    def test100_070(self):
         correct = { 'board':[0, 0, 0, 0, 0, 0, 0, 0,
                              0, 0, 0, 0, 0, 0, 0, 0,
                              0, 0, 0, 0, 0, 0, 0, 0,
@@ -375,6 +375,9 @@ class createTest(unittest.TestCase):
         self.setExtra('1234')
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
+        
+    
+    
     #Sad path
     def test100_900(self):
         correct = {'status': self.error2}
@@ -394,6 +397,10 @@ class createTest(unittest.TestCase):
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
         
-        
-        
+    def test100_903(self):
+        correct = {'status': self.error1}
+        self.setLight()
+        result = create._create(self.inputDictionary)
+        self.assertEqual(correct, result)
+    
     
