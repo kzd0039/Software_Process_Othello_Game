@@ -12,7 +12,7 @@ def _create(parms):
     #New an empty result dictionary to store the output
     result = {}
     #Set the default value of 'light', 'dark', 'blank' to 1, 2, 0 respectively
-    result['tokens'] = { light': 1, 'dark': 2, 'blank': 0}
+    result['tokens'] = {'light': 1, 'dark': 2, 'blank': 0}
     
     
     #Define error messages
