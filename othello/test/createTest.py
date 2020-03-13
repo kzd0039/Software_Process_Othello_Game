@@ -410,7 +410,7 @@ class createTest(unittest.TestCase):
         self.assertEqual(correct, result)
         
     def test100_911(self):
-        correct = {'status': self.error1}
+        correct = {'status': self.error2}
         self.setDark('-1')
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
