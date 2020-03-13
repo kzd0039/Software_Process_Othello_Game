@@ -39,7 +39,7 @@ class createTest(unittest.TestCase):
     
         
     def test100_010(self):
-        correct = { 'board': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+        correct = { 'board':[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
                              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
                              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
                              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
