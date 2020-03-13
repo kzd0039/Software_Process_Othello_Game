@@ -113,7 +113,27 @@ class createTest(unittest.TestCase):
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)    
         
-        
+    def test100_021(self):
+        correct = { 'board':[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 0, 5, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 5, 0, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                             1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 
+                    'tokens': {'light': 9, 'dark': 5, 'blank': 1}, 
+                    'status': 'ok', 
+                    'integrity': '723c769319c6529cf8520336232a9e5d281be77df1455c6ceb10a5d1d4733236'}
+        self.setLight('0')
+        self.setDark('5')
+        self.setBlank('1')
+        self.setSize('10')
+        result = create._create(self.inputDictionary)
+        self.assertEqual(correct, result)  
+              
     #Sad path
     def test100_900(self):
         correct = {'status': self.error2}
