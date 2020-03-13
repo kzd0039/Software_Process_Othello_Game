@@ -38,6 +38,9 @@ class createTest(unittest.TestCase):
     
     def setSize(self, size):
         self.inputDictionary['size'] = size
+        
+    def setExtra(self, extra):
+        self.inputDictionary['extra'] = extra
     
     #100 create
     #    Desired level of confidence:    boundary value analysis
@@ -356,7 +359,22 @@ class createTest(unittest.TestCase):
                     'integrity': 'b11fcf5f9ac9d3b8cea8085208e210182a8d6b73a84028562ab2c87d190b9ada'}
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
-    
+        
+    def test100_60(self):
+        correct = { 'board':[0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 1, 2, 0, 0, 0,
+                             0, 0, 0, 2, 1, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0], 
+                    'tokens': {'light': 1, 'dark': 2, 'blank': 0}, 
+                    'status': 'ok', 
+                    'integrity': 'b11fcf5f9ac9d3b8cea8085208e210182a8d6b73a84028562ab2c87d190b9ada'}
+        self.setExtra('1234')
+        result = create._create(self.inputDictionary)
+        self.assertEqual(correct, result)
     #Sad path
     def test100_900(self):
         correct = {'status': self.error2}
