@@ -154,7 +154,28 @@ class createTest(unittest.TestCase):
         self.setBlank('3')
         self.setSize('10')
         result = create._create(self.inputDictionary)
-        self.assertEqual(correct, result)         
+        self.assertEqual(correct, result)    
+        
+    def test100_030(self):
+        correct = { 'board':[4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                             4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                             4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                             4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                             4, 4, 4, 4, 3, 9, 4, 4, 4, 4, 
+                             4, 4, 4, 4, 9, 3, 4, 4, 4, 4,
+                             4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                             4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+                             4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                             4, 4, 4, 4, 4, 4, 4, 4, 4, 4], 
+                    'tokens': {'light': 3, 'dark': 9, 'blank': 4}, 
+                    'status': 'ok', 
+                    'integrity': 'a3718ffbc2f822320ee4db10c269a9749859b9952db13ff6b289a6ebd6ce42c6'}
+        self.setLight('3')
+        self.setDark('9')
+        self.setBlank('4')
+        self.setSize('10')
+        result = create._create(self.inputDictionary)
+        self.assertEqual(correct, result)     
     
               
     #Sad path
