@@ -408,5 +408,11 @@ class createTest(unittest.TestCase):
         self.setDark('10')
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
+        
+    def test100_911(self):
+        correct = {'status': self.error1}
+        self.setDark('-1')
+        result = create._create(self.inputDictionary)
+        self.assertEqual(correct, result)
     
     
