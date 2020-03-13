@@ -435,7 +435,7 @@ class createTest(unittest.TestCase):
         
     def test100_921(self):
         correct = {'status': self.error2}
-        self.setLight('-1')
+        self.setBlank('-1')
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
     
