@@ -36,7 +36,43 @@ class createTest(unittest.TestCase):
     def setSize(self, size):
         self.inputDictionary['size'] = size
     
-    
+    #100 create
+    #    Desired level of confidence:    boundary value analysis
+    #    Input-output Analysis
+    #        inputs:        
+    #                    parms['light'] -> integer .GE.0 .LE.9 
+    #        outputs:    float .GT. 0 .LE. 1.0
+    #    Happy path analysis:
+    #       n:       nominal value    n=6
+    #                low bound        n=3
+    #        t:      nominal value    t=1.4398
+    #                low bound        t>0.0
+    #        tails:  value 1          tails = 1
+    #                value 2          tails = 2
+    #                missing tails
+    #        output:
+    #                The output is an interaction of t x tails x n:
+    #                    nominal t, 1 tail
+    #                    nominal t, 2 tails
+    #                    low n, low t, 1 tail
+    #                    low n, low t, 2 tails
+    #                    high n, low t, 1 tail
+    #                    high n, low t, 2 tails
+    #                    low n, high t, 1 tail
+    #                    low n, high t, 2 tails
+    #                    high n, high t, 1 tail
+    #                    high n, high t, 2 tails
+    #                    nominal t, default tails
+    #    Sad path analysis:
+    #        n:      missing n
+    #                out-of-bound n   n<3
+    #                non-integer n    n = 2.5
+    #        t:      missing t
+    #                out-of-bounds n  t<0.0
+    #                non-numeric t    t="abc"
+    #        tails:  invalid tails    tails = 3
+    #
+    # Happy path
         
     def test100_010(self):
         correct = { 'board':[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
