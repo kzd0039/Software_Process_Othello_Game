@@ -332,13 +332,28 @@ class createTest(unittest.TestCase):
                              5, 5, 5, 4, 3, 5, 5, 5,
                              5, 5, 5, 5, 5, 5, 5, 5,
                              5, 5, 5, 5, 5, 5, 5, 5,
-                             5, 5, 5, 5, 5, 5, 5, 5,], 
+                             5, 5, 5, 5, 5, 5, 5, 5], 
                     'tokens': {'light': 3, 'dark': 4, 'blank': 5}, 
                     'status': 'ok', 
                     'integrity': '306a2474c8f8b41c9e31af0fe360f9fcaf3531b3b4a1c3624acd8fbc2530b02e'}
         self.setLight('3')
         self.setDark('4')
         self.setBlank('5')
+        result = create._create(self.inputDictionary)
+        self.assertEqual(correct, result)
+    
+    def test100_60(self):
+        correct = { 'board':[0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0], 
+                    'tokens': {'light': 1, 'dark': 2, 'blank': 0}, 
+                    'status': 'ok', 
+                    'integrity': 'db24b170e77c8bef5416f5d39e1fb94b82245089416b95305756043dd195fcef'}
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
     
