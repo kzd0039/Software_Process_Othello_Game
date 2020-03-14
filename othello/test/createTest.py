@@ -496,6 +496,14 @@ class createTest(unittest.TestCase):
         self.setBlank('5')
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
+        
+    def test100_942(self):
+        correct = {'status': self.error3}
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('2')
+        result = create._create(self.inputDictionary)
+        self.assertEqual(correct, result)
     
         
     
