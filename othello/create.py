@@ -93,7 +93,7 @@ def _create(parms):
     blank = result['tokens']['blank']
     
     
-    #Construct 'board' with all 'blank' tokens
+    #Construct 'board' and set all tokens to blank
     result['board'] = [blank]* (size ** 2)
     #Calculate the index of the four tokens in the center of the board
     left_top = (size ** 2)//2 - size//2 - 1

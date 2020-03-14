@@ -71,7 +71,7 @@ class createTest(unittest.TestCase):
     #                                   <blank> is the value specified by the blank parameter        
     #                                   <next_player> At creation, <next_player> is the value associated with the dark parameter.        
     #    Happy path analysis:
-    #            test           input 
+    #            Test           Input 
     #        test100_010:       http://localhost:5000/othello?op=create&light=6&dark=5&blank=1&size=10
     #        test100_020:       http://localhost:5000/othello?op=create&light=9&dark=5&blank=1&size=10
     #        test100_021:       http://localhost:5000/othello?op=create&light=0&dark=5&blank=1&size=10
@@ -89,7 +89,7 @@ class createTest(unittest.TestCase):
     #        test100_070:       http://localhost:5000/othello?op=create&extra=1234
     #
     #    Sad path analysis:
-    #            test           input
+    #            Test           Input
     #        test100_900:       http://localhost:5000/othello?op=create&light=10
     #        test100_901:       http://localhost:5000/othello?op=create&light=-1
     #        test100_902:       http://localhost:5000/othello?op=create&light=w

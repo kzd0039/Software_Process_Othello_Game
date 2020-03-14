@@ -63,12 +63,13 @@ for num in l:
     if temp - int(temp) == 0:
         print(True)
         
+#This way cannot be used to detect if the input is integer    
 l2 = ['0', '1','2','3','4','5.00000000001','6','7','8','9','10','11','12','13','14','15','16']
 for num in l2:
     temp = float(num)
     if temp - int(temp) == 0:
         print(True)
-        
+       
 
 
 
