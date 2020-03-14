@@ -74,4 +74,3 @@ for num in l2:
 
 
 
-
