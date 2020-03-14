@@ -1,6 +1,9 @@
 '''
     Created on Mar 12, 2020
     @author: Kun Ding
+    
+    Modified on Mar 13, 2020
+    @author: Kun Ding
 '''
 
 
@@ -55,11 +58,18 @@ print(e - int(e) == 0)
 
 
 l = [str(x) for x in range(0,17)]
+for num in l:
+    temp = float(num)
+    if temp - int(temp) == 0:
+        print(True)
+        
 l2 = ['0', '1','2','3','4','5.00000000001','6','7','8','9','10','11','12','13','14','15','16']
 for num in l2:
     temp = float(num)
     if temp - int(temp) == 0:
         print(True)
+        
+
 
 
 

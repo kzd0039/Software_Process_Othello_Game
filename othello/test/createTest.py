@@ -53,7 +53,10 @@ class createTest(unittest.TestCase):
     #                    'size'  -> even integer .GE.6 .LE.16, optional,  defaulting to 8, arrives unvalidated 
     #        outputs -> dictionary:
     #                    key        value
-    #                    'board' -> list of integers,
+    #                    'board' -> list of integers arranged in row-major order to form a size*size grid. Each value is in range[0,9]
+    #                               The board has two light tokens and two dark tokens arranged in center on a diagonal with each other.
+    #                               The light tokens form a north-west to south-east diagonal
+    #                               The dark tokens form a north-east to south-west diagonal 
     #                    'tokens' -> dictionary
     #                                  key       value
     #                                  'light' -> The integer value specified by the light parameter
@@ -68,9 +71,45 @@ class createTest(unittest.TestCase):
     #                                   <blank> is the value specified by the blank parameter        
     #                                   <next_player> At creation, <next_player> is the value associated with the dark parameter.        
     #    Happy path analysis:
-    #      
-    #    Sad path analysis:
+    #            test           input 
+    #        test100_010:       http://localhost:5000/othello?op=create&light=6&dark=5&blank=1&size=10
+    #        test100_020:       http://localhost:5000/othello?op=create&light=9&dark=5&blank=1&size=10
+    #        test100_021:       http://localhost:5000/othello?op=create&light=0&dark=5&blank=1&size=10
+    #        test100_022:       http://localhost:5000/othello?op=create&dark=5&blank=3&size=10
+    #        test100_030:       http://localhost:5000/othello?op=create&light=3&dark=9&blank=4&size=10
+    #        test100_031:       http://localhost:5000/othello?op=create&light=3&dark=0&blank=4&size=10
+    #        test100_032:       http://localhost:5000/othello?op=create&light=3&blank=4&size=10
+    #        test100_040:       http://localhost:5000/othello?op=create&light=3&dark=4&blank=9&size=10
+    #        test100_041:       http://localhost:5000/othello?op=create&light=3&dark=4&blank=0&size=10
+    #        test100_042:       http://localhost:5000/othello?op=create&light=3&dark=4&size=10
+    #        test100_050:       http://localhost:5000/othello?op=create&light=3&dark=4&blank=5&size=16
+    #        test100_051:       http://localhost:5000/othello?op=create&light=3&dark=4&blank=5&size=6
+    #        test100_052:       http://localhost:5000/othello?op=create&light=3&dark=4&blank=5
+    #        test100_060:       http://localhost:5000/othello?op=create
+    #        test100_070:       http://localhost:5000/othello?op=create&extra=1234
     #
+    #    Sad path analysis:
+    #            test           input
+    #        test100_900:       http://localhost:5000/othello?op=create&light=10
+    #        test100_901:       http://localhost:5000/othello?op=create&light=-1
+    #        test100_902:       http://localhost:5000/othello?op=create&light=w
+    #        test100_903:       http://localhost:5000/othello?op=create&light=
+    #        test100_910:       http://localhost:5000/othello?op=create&dark=10
+    #        test100_911:       http://localhost:5000/othello?op=create&dark=-1
+    #        test100_912:       http://localhost:5000/othello?op=create&dark=d
+    #        test100_913:       http://localhost:5000/othello?op=create&dark=
+    #        test100_920:       http://localhost:5000/othello?op=create&blank=10
+    #        test100_921:       http://localhost:5000/othello?op=create&blank=-1
+    #        test100_922:       http://localhost:5000/othello?op=create&blank=b
+    #        test100_923:       http://localhost:5000/othello?op=create&blank=
+    #        test100_930:       http://localhost:5000/othello?op=create&size=17
+    #        test100_931:       http://localhost:5000/othello?op=create&size=5
+    #        test100_932:       http://localhost:5000/othello?op=create&size=1.2
+    #        test100_933:       http://localhost:5000/othello?op=create&blank=9
+    #        test100_934:       http://localhost:5000/othello?op=create&size=
+    #        test100_940:       http://localhost:5000/othello?op=create&light=5&dark=5&blank=0
+    #        test100_941:       http://localhost:5000/othello?op=create&light=5&dark=2&blank=5
+    #        teat100_942:       http://localhost:5000/othello?op=create&light=1&dark=2&blank=2
     
     
     # Happy path   

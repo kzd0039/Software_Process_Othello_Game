@@ -4,9 +4,11 @@
     
     Modified on Mar 12, 2020
     @author: Kun Ding
+    
+    Modified on Mar 13, 2020
+    @author: Kun Ding
 '''
 import hashlib
-
 
 def _create(parms):
     #New an empty result dictionary to store the output
