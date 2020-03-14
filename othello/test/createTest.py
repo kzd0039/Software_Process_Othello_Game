@@ -1,11 +1,8 @@
 '''
-    Created on Mar 11, 2020
-    @author: Kun Ding
-    
-    Modified on Mar 12, 2020
-    @author: Kun Ding
-    
-    Modified on Mar 13, 2020
+    Created to test _create()
+    Baselined: 11 Mar 2020
+    Modified: 12 Mar 2020
+    Modified: 13 Mar 2020
     @author: Kun Ding
 '''
 

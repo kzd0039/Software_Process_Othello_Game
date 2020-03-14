@@ -1,8 +1,7 @@
 '''
-    Created on Mar 12, 2020
-    @author: Kun Ding
-    
-    Modified on Mar 13, 2020
+    Created to check the output of practice code
+    Baselined: 12 Mar 2020
+    Modified: 13 Mar 2020
     @author: Kun Ding
 '''
 
