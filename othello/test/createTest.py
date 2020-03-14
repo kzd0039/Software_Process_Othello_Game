@@ -18,10 +18,10 @@ class createTest(unittest.TestCase):
         self.nominalDark = 2
         self.nominalBlank = 0
         self.nominalSize = 8
-        self.error1 = 'error: value of light/blank/dark must be integers only'
-        self.error2 = 'error: value of light/blank/dark out of bounds'
-        self.error3 = 'error: value of light/blank/dark must be distinct'
-        self.error4 = 'error: value of size must be even'
+        self.error1 = 'error: light/blank/dark/size non-integer'
+        self.error2 = 'error: light/blank/dark/size out of bounds'
+        self.error3 = 'error: light/blank/dark not unique'
+        self.error4 = 'error: odd size'
         self.inputDictionary = {}
         
     def tearDown(self):
@@ -448,6 +448,12 @@ class createTest(unittest.TestCase):
     def test100_923(self):
         correct = {'status': self.error1}
         self.setBlank(None)
+        result = create._create(self.inputDictionary)
+        self.assertEqual(correct, result)
+        
+    def test100_930(self):
+        correct = {'status': self.error2}
+        self.setSize('17')
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
     
