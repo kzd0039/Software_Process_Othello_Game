@@ -456,5 +456,12 @@ class createTest(unittest.TestCase):
         self.setSize('17')
         result = create._create(self.inputDictionary)
         self.assertEqual(correct, result)
+        
+    def test100_931(self):
+        correct = {'status': self.error4}
+        self.setSize('5')
+        result = create._create(self.inputDictionary)
+        self.assertEqual(correct, result)
+        
     
     
