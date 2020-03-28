@@ -31,5 +31,10 @@ def _status(parms):
         except:
         #If value of 'dark' is not integer, return corresponding error message
             return {'status': ERROR01}
+        if dark > 9 or dark < 0:
+            return {'status': ERROR02}
+        #overwrite the value of dark
+        result['tokens']['dark'] = dark
+        
     
     return result
