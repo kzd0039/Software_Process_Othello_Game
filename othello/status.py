@@ -5,5 +5,8 @@
     @Author: Kun Ding
 """
 def _status(parms):
-    result = {'status': 'ok'}
+    result = {}
+    result['tokens'] = {'light': 1, 'dark': 2, 'blank': 0}
+    
+    
     return result

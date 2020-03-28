@@ -15,6 +15,10 @@ class statusTest(unittest.TestCase):
         self.nominalBlank = 0
         self.nominalOpeation = 'status'
         self.inputDictionary = {}
+        self.error1 = 'error: light/blank/dark/size non-integer'
+        self.error2 = 'error: light/blank/dark/size out of bounds'
+        self.error3 = 'error: light/blank/dark not unique'
+        self.error4 = 'error: odd size'
         
     def tearDown(self):
         self.inputDictionary = {}
@@ -40,8 +44,15 @@ class statusTest(unittest.TestCase):
     def setExtra(self, extra):
         self.inputDictionary['extra'] = extra
     
+    
+    
+    
+    
+    
+    
     def test_tdd(self):
         self.setOperation('status')
+        
         correct = {'status':'ok'}
         result = status._status(self.inputDictionary) 
         self.assertEqual(correct, result)
