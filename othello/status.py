@@ -46,5 +46,12 @@ def _status(parms):
             return {'status': ERROR02}
         #overwrite the value of blank
         result['tokens']['blank'] = blank
+        
+    light = result['tokens']['light']
+    dark = result['tokens']['dark']
+    blank = result['tokens']['blank']   
+    #If blank, dark or light is not unique, return corresponding error message
+    if light == dark or light == blank or dark == blank:
+        return {'status': ERROR03}
     
     return result
