@@ -18,7 +18,6 @@ class statusTest(unittest.TestCase):
         self.error1 = 'error: light/blank/dark/size non-integer'
         self.error2 = 'error: light/blank/dark/size out of bounds'
         self.error3 = 'error: light/blank/dark not unique'
-        self.error4 = 'error: odd size'
         
     def tearDown(self):
         self.inputDictionary = {}
@@ -52,8 +51,9 @@ class statusTest(unittest.TestCase):
     
     def test_tdd(self):
         self.setOperation('status')
-        self.setBlank('-1')
-        correct = {'status':self.error2}
+        self.setLight('1')
+        self.setBlank('1')
+        correct = {'status':self.error3}
         result = status._status(self.inputDictionary) 
         self.assertEqual(correct, result)
         
