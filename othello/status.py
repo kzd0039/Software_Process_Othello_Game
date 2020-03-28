@@ -5,5 +5,5 @@
     @Author: Kun Ding
 """
 def _status(parms):
-    result = {'status': 'status stub'}
+    result = {'status': 'ok'}
     return result
