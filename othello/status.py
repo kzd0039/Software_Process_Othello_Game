@@ -42,5 +42,9 @@ def _status(parms):
         except:
         #If value of 'blank' is not integer, return corresponding error message
             return {'status': ERROR01}   
+        if blank > 9 or blank < 0:
+            return {'status': ERROR02}
+        #overwrite the value of blank
+        result['tokens']['blank'] = blank
     
     return result
