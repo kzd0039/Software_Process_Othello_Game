@@ -36,5 +36,11 @@ def _status(parms):
         #overwrite the value of dark
         result['tokens']['dark'] = dark
         
+    if 'blank' in parms:
+        try:
+            blank = int(parms['blank'])
+        except:
+        #If value of 'blank' is not integer, return corresponding error message
+            return {'status': ERROR01}   
     
     return result
