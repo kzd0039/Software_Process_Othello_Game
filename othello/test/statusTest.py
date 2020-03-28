@@ -52,11 +52,11 @@ class statusTest(unittest.TestCase):
     
     def test_tdd(self):
         self.setOperation('status')
-        self.setLight('b')
+        self.setDark('b')
         correct = {'status':self.error1}
         result = status._status(self.inputDictionary) 
         self.assertEqual(correct, result)
         
-        
+       
     
     
