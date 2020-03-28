@@ -1,8 +1,9 @@
 '''
     Created to implement operation create
-    Baselined: 11 Mar 2020 
-    Modified: 12 Mar 2020
-    Modified: 13 Mar 2020
+    Baselined: 11 Mar, 2020 
+    Modified: 12 Mar, 2020
+    Modified: 13 Mar, 2020
+    Modified: 28 Mar, 2020
     @author: Kun Ding
 '''
 
@@ -64,7 +65,7 @@ def _create(parms):
     light = result['tokens']['light']
     dark = result['tokens']['dark']
     blank = result['tokens']['blank']   
-    #if blank, dark or light is not unique, return corsponding error message
+    #If blank, dark or light is not unique, return corresponding error message
     if light == dark or light == blank or dark == blank:
         return {'status': ERROR03}
        
