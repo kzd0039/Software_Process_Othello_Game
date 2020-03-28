@@ -40,7 +40,7 @@ class statusTest(unittest.TestCase):
     def setExtra(self, extra):
         self.inputDictionary['extra'] = extra
     
-    def TDDtest(self):
+    def test_tdd(self):
         self.setOperation('status')
         correct = {'status':'ok'}
         result = status._status(self.inputDictionary) 
