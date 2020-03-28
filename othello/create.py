@@ -45,9 +45,6 @@ def _create(parms):
         #If value of 'dark' is not in range [0,9], return corresponding error message 
         if dark > 9 or dark < 0:
             return {'status': ERROR02}
-        #If value of 'dark' equals to the value of 'light', return corresponding error message
-        if dark == result['tokens']['light']:
-            return {'status': ERROR03}
         #overwrite the value of dark
         result['tokens']['dark'] = dark
         
@@ -61,13 +58,16 @@ def _create(parms):
         #If value of 'blank' is not in range [0,9], return corresponding error message 
         if blank > 9 or blank < 0:
             return {'status': ERROR02}
-        #If value of 'dark' equals to the value of 'light' or 'dark', return corresponding error message
-        if blank == result['tokens']['dark'] or blank == result['tokens']['light']:
-            return {'status': ERROR03}
         #overwrite the value of blank
         result['tokens']['blank'] = blank
-        
-        
+    
+    light = result['tokens']['light']
+    dark = result['tokens']['dark']
+    blank = result['tokens']['blank']   
+    #if blank, dark or light is not unique, return corsponding error message
+    if light == dark or light == blank or dark == blank:
+        return {'status': ERROR03}
+       
     if 'size' in parms:
         try:  
             size = int(parms['size'])
@@ -83,11 +83,7 @@ def _create(parms):
     #If 'size' is missing, set the size to default value 8
     else:
         size = 8
-        
-        
-    light = result['tokens']['light']
-    dark = result['tokens']['dark']
-    blank = result['tokens']['blank']
+    
     
     
     #Construct 'board' and set all tokens to blank
