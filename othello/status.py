@@ -25,6 +25,11 @@ def _status(parms):
         #Overwrite the value of 'light'
         result['tokens']['light'] = light
         
-    
+    if 'dark' in parms:
+        try:
+            dark = int(parms['dark'])
+        except:
+        #If value of 'dark' is not integer, return corresponding error message
+            return {'status': ERROR01}
     
     return result
