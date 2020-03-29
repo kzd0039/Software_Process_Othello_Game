@@ -88,7 +88,9 @@ def _status(parms):
     integrity = hashlib.sha256(string.encode()).hexdigest()
     
     if integrity != parms['integrity']:
-        return {'status':ERROR09}
+        return {'status': ERROR09}
+    
+    
     
     return 
 
