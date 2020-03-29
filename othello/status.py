@@ -94,7 +94,7 @@ def _status(parms):
    
     
 def index(row, column, size):
-    return 1
+    return row*size + column
 
 
 
