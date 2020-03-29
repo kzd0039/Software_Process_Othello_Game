@@ -92,8 +92,9 @@ def _status(parms):
         return {'status': ERROR09}
     
    
-
-    return {'status': 'ok'}
+    
+def index(row, column, size):
+    return 1
 
 
 
