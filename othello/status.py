@@ -100,7 +100,8 @@ def _status(parms):
 def index(row, column, size):
     if row > 0 and row <size and column >= 0 and column < size:
         return row*size + column
-
+    else:
+        return -1
 
 
 

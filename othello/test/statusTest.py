@@ -58,7 +58,7 @@ class statusTest(unittest.TestCase):
                  0,0,2,1,0,0,
                  0,0,0,0,0,0,
                  0,0,0,0,0,0]
-        correct = None
+        correct = -1
         result = status.index(8,1,6)
         
         self.assertEqual(correct, result)
