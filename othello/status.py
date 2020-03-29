@@ -104,7 +104,8 @@ def index(row, column, size):
         return -1
 
 
-
+def isvalid(row, column, size, board, tokens, stack):
+    return 1
 
 
 

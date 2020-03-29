@@ -58,8 +58,13 @@ class statusTest(unittest.TestCase):
                  0,0,2,1,0,0,
                  0,0,0,0,0,0,
                  0,0,0,0,0,0]
-        correct = -1
-        result = status.index(8,1,6)
+        tokens = {'light':1, 'dark':2, 'blank':0}
+        stack = [ ] 
+        row = 0
+        column = 0
+        size = 6
+        correct = None
+        result = status.isvalid(row, column, size, board, tokens, stack)
         
         self.assertEqual(correct, result)
        
