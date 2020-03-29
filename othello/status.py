@@ -98,17 +98,17 @@ def _status(parms):
     
     
     
-def index(row, column, size):
+def get_index(row, column, size):
     if row > 0 and row <size and column >= 0 and column < size:
         return row*size + column
     else:
         return -1
 
 
-def isvalid(row, column, size, board, tokens, stack, direction):
+def is_valid(row, column, size, board, tokens, stack, direction):
     row += direction[0]
     column += direction[1]
-    i = index(row, column, size)
+    i = get_index(row, column, size)
     if i == -1:
         return -1
     current = board[i]
@@ -120,7 +120,7 @@ def isvalid(row, column, size, board, tokens, stack, direction):
         return current
     else:
         stack.append(current)
-        return isvalid(row, column, size, board, tokens, stack, direction)
+        return is_valid(row, column, size, board, tokens, stack, direction)
    
     
 
