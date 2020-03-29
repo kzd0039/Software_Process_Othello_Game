@@ -105,7 +105,9 @@ def index(row, column, size):
         return -1
 
 
-def isvalid(row, column, size, board, tokens, stack):
+def isvalid(row, column, size, board, tokens, stack, direction):
+    row += direction[0]
+    column += direction[1]
     i = index(row, column, size)
     if i == -1:
         return -1
@@ -118,7 +120,7 @@ def isvalid(row, column, size, board, tokens, stack):
         return current
     else:
         stack.append(current)
-        return isvalid(row, column+1, size, board, tokens, stack)
+        return isvalid(row, column, size, board, tokens, stack)
    
     
 

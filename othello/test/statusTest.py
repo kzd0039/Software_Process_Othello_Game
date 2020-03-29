@@ -60,11 +60,12 @@ class statusTest(unittest.TestCase):
                  0,0,0,0,0,0]
         tokens = {'light':1, 'dark':2, 'blank':0}
         stack = [ ] 
-        row = 3
+        row = 4
         column = 2
         size = 6
         correct = 1
-        result = status.isvalid(row, column, size, board, tokens, stack)
+        direction = [-1,0]
+        result = status.isvalid(row, column, size, board, tokens, stack,direction)
         
         self.assertEqual(correct, result)
        
