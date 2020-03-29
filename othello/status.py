@@ -62,7 +62,7 @@ def _status(parms):
     if light == dark or light == blank or dark == blank:
         return {'status': ERROR03}
     
-    if 'board' not in parms:
+    if 'board' not in parms or parms['board'] == None:
         return {'status': ERROR04}
     
     board = parms['board']
