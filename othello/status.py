@@ -85,11 +85,13 @@ def _status(parms):
         return {'status': ERROR08}
     
     string = ''.join(str(x) for x in board) 
-    string = string + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(dark)
+    string1 = string + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(dark)
+    string2 = string + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(light)
     #Calculate the 'integrity' 
-    integrity = hashlib.sha256(string.encode()).hexdigest()
+    integrity1 = hashlib.sha256(string1.encode()).hexdigest()
+    integrity2 = hashlib.sha256(string2.encode()).hexdigest()
     
-    if integrity != parms['integrity']:
+    if not(integrity1 == parms['integrity'] or integrity2 ==  parms['integrity']):
         return {'status': ERROR09}
     
     Directions = [[1,0],[-1,0],[0,1],[0,-1],[1,-1],[1,1],[-1,-1],[-1,1]]
