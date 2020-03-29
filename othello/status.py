@@ -17,6 +17,7 @@ def _status(parms):
     ERROR03 = 'error: light/blank/dark not unique'
     ERROR04 = 'error: missing board'
     ERROR05 = 'error: non-square board'
+    ERROR06 = 'error: odd board'
     
     if 'light' in parms:
         try:
@@ -66,7 +67,8 @@ def _status(parms):
     size = int(math.sqrt(len(board)))
     if size**2 != len(board):
         return {'status': ERROR05}
-    
+    if size%2 != 0:
+        return {'status': ERROR06}
     
     
     return 
