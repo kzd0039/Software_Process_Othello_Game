@@ -21,6 +21,7 @@ def _status(parms):
     ERROR06 = 'error: odd board'
     ERROR07 = 'error: board with non-light/dark/blank tokens'
     ERROR08 = 'error: missing integrity'
+    ERROR09 = 'error: invalid integrity'
     
     if 'light' in parms:
         try:
@@ -86,8 +87,8 @@ def _status(parms):
     #Calculate the 'integrity' 
     integrity = hashlib.sha256(string.encode()).hexdigest()
     
-    if integrity == parms['integrity']:
-        return True
+    if integrity != parms['integrity']:
+        return {'status':ERROR09}
     
     return 
 
