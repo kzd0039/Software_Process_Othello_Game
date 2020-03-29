@@ -63,7 +63,7 @@ class statusTest(unittest.TestCase):
         row = 0
         column = 0
         size = 6
-        correct = None
+        correct = -1
         result = status.isvalid(row, column, size, board, tokens, stack)
         
         self.assertEqual(correct, result)

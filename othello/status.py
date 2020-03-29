@@ -10,6 +10,7 @@ import collections
 import hashlib
 
 
+
 def _status(parms):
     tokens = {'light': 1, 'dark': 2, 'blank': 0}
 
@@ -105,7 +106,17 @@ def index(row, column, size):
 
 
 def isvalid(row, column, size, board, tokens, stack):
-    return 1
+    i = index(row, column, size)
+    current = board[i]
+    if current == tokens['blank']:
+        return -1
+    if stack and current != stack[-1]:
+        return current
+    else:
+        stack.append(current)
+        return isvalid(row, column+1, size, board, tokens, stack)
+   
+    
 
 
 
