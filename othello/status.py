@@ -19,7 +19,7 @@ def _status(parms):
     ERROR05 = 'error: non-square board'
     ERROR06 = 'error: odd board'
     ERROR07 = 'error: board with non-light/dark/blank tokens'
-    
+    ERROR08 = 'error: missing integrity'
     
     if 'light' in parms:
         try:
@@ -75,6 +75,10 @@ def _status(parms):
     count = collections.Counter(board)
     if count[light] + count[dark] + count[blank] != len_board:
         return {'status': ERROR07}
+    
+    
+    if 'integrity' not in parms:
+        return {'status': ERROR08}
     
     return 
 
