@@ -59,8 +59,8 @@ class statusTest(unittest.TestCase):
                  0,0,0,0,0,0,
                  0,0,0,0,0,0]
         correct = None
-        index = status.index(8,1,6)
-        result = board[index]
+        result = status.index(8,1,6)
+        
         self.assertEqual(correct, result)
        
     
