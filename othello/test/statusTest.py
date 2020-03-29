@@ -121,7 +121,7 @@ class statusTest(unittest.TestCase):
         self.setBoard(board)
         self.setIntegrity(integrity)
     
-        correct = {'status': 'light'}
+        correct = {'status': 'end'}
         result = status._status(self.inputDictionary)
     
         self.assertEqual(correct, result)
