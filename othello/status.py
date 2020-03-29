@@ -107,9 +107,13 @@ def index(row, column, size):
 
 def isvalid(row, column, size, board, tokens, stack):
     i = index(row, column, size)
+    if i == -1:
+        return -1
     current = board[i]
+    
     if current == tokens['blank']:
         return -1
+    
     if stack and current != stack[-1]:
         return current
     else:
