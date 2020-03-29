@@ -6,7 +6,7 @@
 """
 
 import math
-
+import collections
 
 def _status(parms):
     tokens = {'light': 1, 'dark': 2, 'blank': 0}
@@ -18,6 +18,8 @@ def _status(parms):
     ERROR04 = 'error: missing board'
     ERROR05 = 'error: non-square board'
     ERROR06 = 'error: odd board'
+    ERROR07 = 'error: board with non-light/dark/blank tokens'
+    
     
     if 'light' in parms:
         try:
@@ -64,12 +66,15 @@ def _status(parms):
         return {'status': ERROR04}
     
     board = parms['board']
-    size = int(math.sqrt(len(board)))
-    if size**2 != len(board):
+    len_board = len(board)
+    size = int(math.sqrt(len_board))
+    if size**2 != len_board:
         return {'status': ERROR05}
     if size%2 != 0:
         return {'status': ERROR06}
-    
+    count = collections.Counter(board)
+    if count[light] + count[dark] + count[blank] != len_board:
+        return {'status': ERROR07}
     
     return 
 
