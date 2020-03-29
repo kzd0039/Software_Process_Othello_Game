@@ -15,7 +15,7 @@ def _status(parms):
     ERROR01 = 'error: light/blank/dark/size non-integer'
     ERROR02 = 'error: light/blank/dark/size out of bounds'
     ERROR03 = 'error: light/blank/dark not unique'
-    ERROR04 = 'error: Missing board'
+    ERROR04 = 'error: missing board'
     ERROR05 = 'error: non-square board'
     
     if 'light' in parms:

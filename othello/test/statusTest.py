@@ -14,9 +14,9 @@ class statusTest(unittest.TestCase):
         self.error1 = 'error: light/blank/dark/size non-integer'
         self.error2 = 'error: light/blank/dark/size out of bounds'
         self.error3 = 'error: light/blank/dark not unique'
-        self.error4 = 'error: Missing board'
+        self.error4 = 'error: missing board'
         self.error5 = 'error: non-square board'
-        self.errot5 = 'error: Missing integrity'
+        self.error6 = 'error: odd board'
         
         
     def tearDown(self):
@@ -55,15 +55,14 @@ class statusTest(unittest.TestCase):
         self.setDark('2')
         self.setBlank('0')
         self.setIntegrity('123')
-        board = [0,0,0,0,0,0,
-                 0,0,0,0,0,0,
-                 0,0,1,2,0,0,
-                 0,0,2,1,0,0,
-                 0,0,0,0,0,0,
-                 0,0,0,0,0,0,0,0]
+        board = [0,0,0,0,0,
+                 0,0,0,0,0,
+                 0,0,1,2,0,
+                 0,0,2,1,0,
+                 0,0,0,0,0]
         self.setBoard(board)
         
-        correct = {'status': self.error5}
+        correct = {'status': self.error6}
         result = status._status(self.inputDictionary) 
         self.assertEqual(correct, result)
         
