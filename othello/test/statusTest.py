@@ -35,7 +35,7 @@ class statusTest(unittest.TestCase):
         self.inputDictionary['blank'] = blank
     
     def setBoard(self, board):
-        self.inputDictionary['size'] = board
+        self.inputDictionary['board'] = board
         
     def setIntegrity(self, integrity):
         self.inputDictionary['integrity'] = integrity
