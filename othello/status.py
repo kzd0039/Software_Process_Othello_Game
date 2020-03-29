@@ -92,11 +92,28 @@ def _status(parms):
     if integrity != parms['integrity']:
         return {'status': ERROR09}
     
+    Directions = [[1,0],[-1,0],[0,1],[0,-1],[1,-1],[1,1],[-1,-1],[-1,1]]
+    result = {light:0,dark:0}
     
     
+    for i in range(size):
+        for j in range(size):
+            index = get_index(i,j,size)
+            if board[index] != blank:
+                for direction in Directions:
+                    stack = [ ]
+                    key = is_valid(i,j,size,board,tokens,stack,direction)
+                    if key in result:
+                        result[key] += 1
     
+    if result[light] > 0 and result[dark] > 0:
+        return {'status':'ok'}
+    if result[light] > 0:
+        return {'status': 'light'}
+    if result[dark] > 0:
+        return {'status': 'dark'}
     
-    
+    return {'status': 'end'}
     
 def get_index(row, column, size):
     if row > 0 and row <size and column >= 0 and column < size:
