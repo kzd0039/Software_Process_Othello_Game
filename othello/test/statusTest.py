@@ -10,14 +10,12 @@ import othello.status as status
 
 class statusTest(unittest.TestCase):
     def setUp(self):
-        self.nominalLight = 1
-        self.nominalDark = 2
-        self.nominalBlank = 0
-        self.nominalOpeation = 'status'
         self.inputDictionary = {}
         self.error1 = 'error: light/blank/dark/size non-integer'
         self.error2 = 'error: light/blank/dark/size out of bounds'
         self.error3 = 'error: light/blank/dark not unique'
+        self.error4 = 'error: Missing board'
+        self.errot5 = 'error: Missing integrity'
         
     def tearDown(self):
         self.inputDictionary = {}
@@ -51,8 +49,12 @@ class statusTest(unittest.TestCase):
     
     def test_tdd(self):
         self.setOperation('status')
-        self.setLight('2')
-        correct = {'status':self.error3}
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('0')
+        self.setIntegrity('123')
+        
+        correct = {'status':self.error4}
         result = status._status(self.inputDictionary) 
         self.assertEqual(correct, result)
         

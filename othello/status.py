@@ -5,13 +5,12 @@
     @Author: Kun Ding
 """
 def _status(parms):
-    result = {}
-    result['tokens'] = {'light': 1, 'dark': 2, 'blank': 0}
+    tokens = {'light': 1, 'dark': 2, 'blank': 0}
+
     
     ERROR01 = 'error: light/blank/dark/size non-integer'
     ERROR02 = 'error: light/blank/dark/size out of bounds'
     ERROR03 = 'error: light/blank/dark not unique'
-    ERROR04 = 'error: odd size'
     
     if 'light' in parms:
         try:
@@ -23,7 +22,7 @@ def _status(parms):
         if light > 9 or light < 0:
             return {'status': ERROR02}
         #Overwrite the value of 'light'
-        result['tokens']['light'] = light
+        tokens['light'] = light
         
     if 'dark' in parms:
         try:
@@ -34,7 +33,7 @@ def _status(parms):
         if dark > 9 or dark < 0:
             return {'status': ERROR02}
         #overwrite the value of dark
-        result['tokens']['dark'] = dark
+        tokens['dark'] = dark
         
     if 'blank' in parms:
         try:
@@ -45,13 +44,13 @@ def _status(parms):
         if blank > 9 or blank < 0:
             return {'status': ERROR02}
         #overwrite the value of blank
-        result['tokens']['blank'] = blank
+        tokens['blank'] = blank
         
-    light = result['tokens']['light']
-    dark = result['tokens']['dark']
-    blank = result['tokens']['blank']   
+    light = tokens['light']
+    dark = tokens['dark']
+    blank = tokens['blank']   
     #If blank, dark or light is not unique, return corresponding error message
     if light == dark or light == blank or dark == blank:
         return {'status': ERROR03}
     
-    return result
+    return 
