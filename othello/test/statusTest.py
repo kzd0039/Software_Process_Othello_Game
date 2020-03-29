@@ -55,13 +55,13 @@ class statusTest(unittest.TestCase):
         self.setDark('2')
         self.setBlank('0')
         self.setIntegrity('123')
-        
         board = [0,0,0,0,0,0,
                  0,0,0,0,0,0,
                  0,0,1,2,0,0,
                  0,0,2,1,0,0,
                  0,0,0,0,0,0,
                  0,0,0,0,0,0,0]
+        self.setBoard(board)
         
         correct = {'status': self.error5}
         result = status._status(self.inputDictionary) 
