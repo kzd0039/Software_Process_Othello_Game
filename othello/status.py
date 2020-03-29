@@ -120,7 +120,7 @@ def isvalid(row, column, size, board, tokens, stack, direction):
         return current
     else:
         stack.append(current)
-        return isvalid(row, column, size, board, tokens, stack)
+        return isvalid(row, column, size, board, tokens, stack, direction)
    
     
 
