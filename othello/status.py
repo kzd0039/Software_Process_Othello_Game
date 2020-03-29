@@ -4,6 +4,10 @@
     Modified: Mar 28, 2020
     @Author: Kun Ding
 """
+
+import math
+
+
 def _status(parms):
     tokens = {'light': 1, 'dark': 2, 'blank': 0}
 
@@ -12,7 +16,7 @@ def _status(parms):
     ERROR02 = 'error: light/blank/dark/size out of bounds'
     ERROR03 = 'error: light/blank/dark not unique'
     ERROR04 = 'error: Missing board'
-    ERROR05 = 'error: Missing integrity'
+    ERROR05 = 'error: non-square board'
     
     if 'light' in parms:
         try:
@@ -58,8 +62,10 @@ def _status(parms):
     if 'board' not in parms:
         return {'status': ERROR04}
     
-    
-    
+    board = parms['board']
+    size = int(math.sqrt(len(board)))
+    if size**2 != len(board):
+        return {'status': ERROR05}
     
     
     
