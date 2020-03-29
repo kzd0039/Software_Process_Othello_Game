@@ -7,6 +7,7 @@
 
 import math
 import collections
+import hashlib
 
 def _status(parms):
     tokens = {'light': 1, 'dark': 2, 'blank': 0}
@@ -80,7 +81,13 @@ def _status(parms):
     if 'integrity' not in parms or parms['integrity'] == None:
         return {'status': ERROR08}
     
+    string = ''.join(str(x) for x in board) 
+    string = string + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(dark)
+    #Calculate the 'integrity' 
+    integrity = hashlib.sha256(string.encode()).hexdigest()
     
+    if integrity == parms['integrity']:
+        return True
     
     return 
 
