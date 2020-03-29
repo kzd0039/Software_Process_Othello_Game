@@ -19,6 +19,7 @@ class statusTest(unittest.TestCase):
         self.error6 = 'error: odd board'
         self.error7 = 'error: board with non-light/dark/blank tokens'
         self.error8 = 'error: missing integrity'
+        self.error9 = 'error: invalid integrity'
         
     def tearDown(self):
         self.inputDictionary = {}
@@ -63,10 +64,10 @@ class statusTest(unittest.TestCase):
                  0,0,0,0,0,0]
         self.setBoard(board)
         integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
-        self.setIntegrity(integrity)
+        self.setIntegrity('12333')
         
         
-        correct = True
+        correct = {'status': self.error9}
         result = status._status(self.inputDictionary) 
         self.assertEqual(correct, result)
         
