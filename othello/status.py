@@ -99,7 +99,7 @@ def _status(parms):
     for i in range(size):
         for j in range(size):
             index = get_index(i,j,size)
-            if board[index] != blank:
+            if board[index] == blank:
                 for direction in Directions:
                     stack = [ ]
                     key = is_valid(i,j,size,board,tokens,stack,direction)
