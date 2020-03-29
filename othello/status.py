@@ -77,7 +77,7 @@ def _status(parms):
         return {'status': ERROR07}
     
     
-    if 'integrity' not in parms:
+    if 'integrity' not in parms or parms['integrity'] == None:
         return {'status': ERROR08}
     
     
