@@ -63,7 +63,42 @@ print(integrity2 == next_dark_2, integrity1 == next_light_2)
 
 
 
+ Directions = [-size, size, size+1, size-1, -size-1, -size+1, size-1, size+1]
+    result = {light: 0, dark : 0}
+    
+    for row in range(8):
+        for column in range(8):
+            index = row*size + column 
+            if board[index] == blank:
+                for direction in Directions:
+                    token = token_to_place(index+direction, size, board, tokens, direction, [])
+                    if token:
+                        result[token] += 1
+                
+def next_index(row, size, column):
+    return row*size + coloum
 
+def token_to_place(index, size, board, tokens, direction, stack):
+    left = index // size * size - 1
+    right = (index // size + 1) * size
+    top = -1
+    bottom = size ** 2
+    
+    if index >= right or index >= bottom or index <= left or index <= top:
+        return 
+    
+    current_token = board[index]
+    
+    if current_token == tokens['blank']:
+        return 
+    
+    if stack and current_token != stack[-1]:
+        return current_token
+    else:
+        stack.append(current_token)
+    
+    return token_to_place(index+direction, size, board, tokens, direction, stack)
+    
 
 
 
