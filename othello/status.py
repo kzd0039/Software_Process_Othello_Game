@@ -8,7 +8,7 @@
 import math
 import collections
 import hashlib
-from test.test_cgi import BOUNDARY
+
 
 def _status(parms):
     tokens = {'light': 1, 'dark': 2, 'blank': 0}
@@ -91,7 +91,11 @@ def _status(parms):
     if integrity != parms['integrity']:
         return {'status': ERROR09}
     
-   
+    
+    
+    
+    
+    
     
 def index(row, column, size):
     return row*size + column

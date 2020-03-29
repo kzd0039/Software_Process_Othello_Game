@@ -58,8 +58,8 @@ class statusTest(unittest.TestCase):
                  0,0,2,1,0,0,
                  0,0,0,0,0,0,
                  0,0,0,0,0,0]
-        correct = 1
-        index = status.index(2,2,6)
+        correct = None
+        index = status.index(8,1,6)
         result = board[index]
         self.assertEqual(correct, result)
        
