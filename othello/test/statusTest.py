@@ -23,6 +23,7 @@ class statusTest(unittest.TestCase):
         self.error9 = 'error: invalid integrity'
         self.error10 = 'error: board size out of bounds'
         self.error11 = 'error: short integrity'
+        self.error12 = 'error: long integrity'
         
     def tearDown(self):
         self.inputDictionary = {}
@@ -62,11 +63,11 @@ class statusTest(unittest.TestCase):
                  0,0,0,0,0,0,
                  0,0,0,0,0,0,]
                  
-        integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb'
+        integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bbbbb'
         self.setBoard(board)
         self.setIntegrity(integrity)
     
-        correct = {'status': self.error11}
+        correct = {'status': self.error12}
         result = status._status(self.inputDictionary)
     
         self.assertEqual(correct, result)
