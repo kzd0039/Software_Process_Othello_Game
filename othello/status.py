@@ -94,7 +94,8 @@ def _status(parms):
     if len(integrity) < 64:
         return {'status': ERROR11}
  
-    
+    if len(integrity) > 64:
+        return {'status': ERROR12}
   
     #If blank, dark or light is not unique, return corresponding error message
     if light == dark or light == blank or dark == blank:
