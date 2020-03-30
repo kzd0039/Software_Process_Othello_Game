@@ -260,7 +260,35 @@ class statusTest(unittest.TestCase):
         correct = {'status': 'ok'}
         result = status._status(self.inputDictionary)
         self.assertEqual(correct, result)  
-           
+    
+    def test200_051(self):
+        self.setOperation('status')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('0')
+        board = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                 0,0,0,0,0,0,0,1,2,0,0,0,0,0,0,0,
+                 0,0,0,0,0,0,0,2,1,0,0,0,0,0,0,0,
+                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        integrity = '5df1fd1ccbd0dc74d65ab00d4d62f2e21c2def95dc47e7c73751986cdb5e8710'
+        self.setBoard(board)
+        self.setIntegrity(integrity)
+    
+        correct = {'status': 'ok'}
+        result = status._status(self.inputDictionary)
+        self.assertEqual(correct, result)       
 
 #     def test_tdd_02(self):
 #         board = [0,1,1,1,1,0,
