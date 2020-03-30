@@ -27,6 +27,8 @@ def _status(parms):
     ERROR08 = 'error: missing integrity'
     ERROR09 = 'error: invalid integrity'
     ERROR10 = 'error: board size out of bounds'
+    ERROR11 = 'error: short integrity'
+    ERROR12 = 'error: long integrity'
     
     #Validate input
     if 'light' in parms:
@@ -89,6 +91,8 @@ def _status(parms):
     if 'integrity' not in parms or parms['integrity'] == None:
         return {'status': ERROR08}
     integrity = parms['integrity']
+    if len(integrity) < 64:
+        return {'status': ERROR11}
  
     
   
