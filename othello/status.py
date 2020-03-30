@@ -91,8 +91,8 @@ def _status(parms):
     integrity1 = hashlib.sha256(string1.encode()).hexdigest()
     integrity2 = hashlib.sha256(string2.encode()).hexdigest()
     
-    if not(integrity1 == parms['integrity'] or integrity2 ==  parms['integrity']):
-        return {'status': ERROR09}
+#     if not(integrity1 == parms['integrity'] or integrity2 ==  parms['integrity']):
+#         return {'status': ERROR09}
     
     Directions = [[1,0],[-1,0],[0,1],[0,-1],[1,-1],[1,1],[-1,-1],[-1,1]]
     result = {light:0,dark:0}

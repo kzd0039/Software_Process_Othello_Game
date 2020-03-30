@@ -59,10 +59,28 @@ next_light_2 = hashlib.sha256(stirng_2_light.encode()).hexdigest()
 
 print(integrity2 == next_dark_2, integrity1 == next_light_2)
 
-
-
+light, dark, blank = 1, 2, 0
+board3 = [1,1,1,1,1,1,1,1, 
+         1,1,1,1,1,1,1,1,
+         1,1,1,1,1,1,1,1,
+         1,1,1,1,1,1,1,0, 
+         1,1,1,1,1,1,0,0,
+         1,1,1,1,1,1,0,2,
+         1,1,1,1,1,1,1,0,
+         1,1,1,1,1,1,1,1]  
                         
-    
+string_3 = ''.join(str(x) for x in board3) 
+string_3_dark = string_3 + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(dark)
+string_3_light = string_3 + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(light)
+string_3_none = string_3 + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/'
+integrity3 = '8a1c0659575e8cdd01b2e4ff3f431c845e7e7960279bb7abfaa5465e4a755354'
+next_dark_3 = hashlib.sha256(string_3_dark.encode()).hexdigest()
+next_light_3 = hashlib.sha256(string_3_light.encode()).hexdigest()
+next_none_3 = hashlib.sha256(string_3_none.encode()).hexdigest()
+print(next_dark_3)
+print(next_light_3)
+print(next_none_3)
+print(integrity3)
 
 
 
