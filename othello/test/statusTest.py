@@ -389,67 +389,11 @@ class statusTest(unittest.TestCase):
         result = status._status(self.inputDictionary)
         self.assertEqual(correct, result)    
         
-    def test200_073(self):
-        self.setOperation('status')
-        self.setLight('1')
-        self.setDark('2')
-        self.setBlank('0')
-        board = [1,1,1,1,1,1,1,1, 
-                 1,1,1,1,1,1,1,1,
-                 1,1,1,1,1,1,1,1,
-                 1,1,1,1,1,1,1,0, 
-                 1,1,1,1,1,1,0,0,
-                 1,1,1,1,1,1,0,2,
-                 1,1,1,1,1,1,1,0,
-                 1,1,1,1,1,1,1,1]
-        integrity = '8a1c0659575e8cdd01b2e4ff3f431c845e7e7960279bb7abfaa5465e4a755354'
-        self.setBoard(board)
-        self.setIntegrity(integrity)
-     
-        correct = {'status': 'end'}
-        result = status._status(self.inputDictionary)
-        self.assertEqual(correct, result)    
-    
-    
-        
-#     def test_tdd_02(self):
-#         board = [0,1,1,1,1,0,
-#                  1,1,1,1,1,1,
-#                  1,1,1,1,1,1,
-#                  1,1,1,2,1,1,
-#                  1,1,1,1,1,1,
-#                  0,1,1,1,1,0]
-#        
-#         integrity='e2f7b8593ebadc126833074a7d8653d3c12c36ab3b7622a9cc6ac5dc1a0d9698'
-#         self.setBoard(board)
-#         self.setIntegrity(integrity)
-#     
-#         correct = {'status': 'dark'}
-#         result = status._status(self.inputDictionary)
-#     
-#         self.assertEqual(correct, result)
-#         
-#         
-#     def test_tdd_03(self):
-#         board = [2,2,2,2,2,2,
-#                  2,2,2,2,2,2,
-#                  2,2,1,2,2,2,
-#                  2,2,2,2,2,2,
-#                  2,2,2,2,2,2,
-#                  2,2,2,2,2,3]
+#     def test200_073(self):
+#         self.setOperation('status')
 #         self.setLight('1')
 #         self.setDark('2')
-#         self.setBlank('3')
-#         integrity='7c53df9ff782bbbff544d876f4d69a1d87d5864295c0e4a6bf29e6a7ee5a96fc'
-#         self.setBoard(board)
-#         self.setIntegrity(integrity)
-#     
-#         correct = {'status': 'light'}
-#         result = status._status(self.inputDictionary)
-#     
-#         self.assertEqual(correct, result)
-#             
-#     def test_tdd_04(self):
+#         self.setBlank('0')
 #         board = [1,1,1,1,1,1,1,1, 
 #                  1,1,1,1,1,1,1,1,
 #                  1,1,1,1,1,1,1,1,
@@ -457,21 +401,36 @@ class statusTest(unittest.TestCase):
 #                  1,1,1,1,1,1,0,0,
 #                  1,1,1,1,1,1,0,2,
 #                  1,1,1,1,1,1,1,0,
-#                  1,1,1,1,1,1,1,1]  
-#         
-#         self.setLight('1')
-#         self.setDark('2')
-#         self.setBlank('0')
-#         integrity='8a1c0659575e8cdd01b2e4ff3f431c845e7e7960279bb7abfaa5465e4a755354'
+#                  1,1,1,1,1,1,1,1]
+#         integrity = '8a1c0659575e8cdd01b2e4ff3f431c845e7e7960279bb7abfaa5465e4a755354'
 #         self.setBoard(board)
 #         self.setIntegrity(integrity)
-#     
+#      
 #         correct = {'status': 'end'}
 #         result = status._status(self.inputDictionary)
-#     
-#         self.assertEqual(correct, result)
-               
-
+#         self.assertEqual(correct, result)    
+    
+    
+        
+    #Sad path
+    def test200_900(self):
+        self.setOperation('status')
+        self.setLight('10')
+        self.setDark('2')
+        self.setBlank('0')
+        board = [1,1,1,1,1,1,
+                 1,1,1,1,1,1,
+                 1,1,10,2,1,1,
+                 1,1,2,10,1,1,
+                 1,1,1,1,1,1,
+                 1,1,1,1,1,1]
+        integrity = 'b71bf3bee30fb8c3caa49752bcf9656870cfbd3bec4e4353e1e491054bf11c2f'
+        self.setBoard(board)
+        self.setIntegrity(integrity)
+     
+        correct = {'status': self.error2}
+        result = status._status(self.inputDictionary)
+        self.assertEqual(correct, result) 
         
         
         
