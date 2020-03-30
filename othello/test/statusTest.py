@@ -567,7 +567,21 @@ class statusTest(unittest.TestCase):
         result = status._status(self.inputDictionary)
         self.assertEqual(correct, result)         
         
-        
+    def test200_920(self):
+        self.setOperation('status')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('10')
+        board = [10,10,10,10,10,10,10,10,10,10,
+                 10,10,10,10,1,2,10,10,10,10,2,1,
+                 10,10,10,10,10,10,10,10,10,10,10,10,10,10]
+        integrity = '530242aec98aa07d3c025b9101bd5b840527cd9b03302641da18c801d70c37e8'
+        self.setBoard(board)
+        self.setIntegrity(integrity)
+     
+        correct = {'status': self.error2}
+        result = status._status(self.inputDictionary)
+        self.assertEqual(correct, result)      
         
         
         
