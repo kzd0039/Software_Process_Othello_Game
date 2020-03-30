@@ -62,7 +62,11 @@ def _status(parms):
             return {'status': ERROR02}
         #overwrite the value of blank
         tokens['blank'] = blank
-
+        
+    
+    light = tokens['light']
+    dark = tokens['dark']
+    blank = tokens['blank'] 
     
     #If 'board' is missing or the value of it is None, return corresponding error message
     if 'board' not in parms or parms['board'] == None:
@@ -87,9 +91,7 @@ def _status(parms):
     integrity = parms['integrity']
  
     
-    light = tokens['light']
-    dark = tokens['dark']
-    blank = tokens['blank']   
+  
     #If blank, dark or light is not unique, return corresponding error message
     if light == dark or light == blank or dark == blank:
         return {'status': ERROR03}
