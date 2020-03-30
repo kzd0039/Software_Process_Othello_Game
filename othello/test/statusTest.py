@@ -70,6 +70,23 @@ class statusTest(unittest.TestCase):
         result = status._status(self.inputDictionary)
         self.assertEqual(correct, result)
      
+    def test200_020(self):
+        self.setLight('9')
+        self.setDark('2')
+        self.setBlank('0')
+        board = [0,0,0,0,0,0,
+                 0,0,0,0,0,0,
+                 0,0,9,2,0,0,
+                 0,0,2,9,0,0,
+                 0,0,0,0,0,0,
+                 0,0,0,0,0,0]
+        integrity = '5ab81cb67067273363db989119448a0b878896f7db5c268a50c4ae3062cb3647'
+        self.setBoard(board)
+        self.setIntegrity(integrity)
+    
+        correct = {'status': 'ok'}
+        result = status._status(self.inputDictionary)
+        self.assertEqual(correct, result)
 #     def test_tdd_02(self):
 #         board = [0,1,1,1,1,0,
 #                  1,1,1,1,1,1,
