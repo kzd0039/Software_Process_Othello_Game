@@ -3,6 +3,7 @@
     Baselined: Mar 25, 2020
     Modified: Mar 28, 2020
     Modified: Mar 29, 2020
+    Modifired: Mar 30, 2020
     @Author: Kun Ding
 """
 
@@ -43,6 +44,7 @@ def _status(parms):
         #Overwrite the value of 'light'
         tokens['light'] = light
         
+        
     if 'dark' in parms:
         try:
             dark = int(parms['dark'])
@@ -53,6 +55,7 @@ def _status(parms):
             return {'status': ERROR02}
         #overwrite the value of dark
         tokens['dark'] = dark
+        
         
     if 'blank' in parms:
         try:
@@ -70,30 +73,38 @@ def _status(parms):
     dark = tokens['dark']
     blank = tokens['blank'] 
     
+    
     #If 'board' is missing or the value of it is None, return corresponding error message
     if 'board' not in parms or parms['board'] == None:
         return {'status': ERROR04}
-    
     board = parms['board']
     len_board = len(board)
+    #Get square root of the length of board and convert it to integer
     size = int(math.sqrt(len_board))
-    if size**2 != len_board:
+    #If board is non-square, return corresponding error message
+    if size**2 != len_board:   
         return {'status': ERROR05}
-    if size < 6 or size > 10:
+    #If board size out of bounds, return corresponding error message
+    if size < 6 or size > 16:
         return {'status': ERROR10}
+    #If board size not even, return corresponding error message
     if size%2 != 0:
         return {'status': ERROR06}
     count = collections.Counter(board)
+    #If non-dark/blank/light values occur in the board, return corresponding error message
     if count[light] + count[dark] + count[blank] != len_board:
         return {'status': ERROR07}
     
     
+    
+    #If missing 'integrity' or it's value is None, return corresponding error message
     if 'integrity' not in parms or parms['integrity'] == None:
         return {'status': ERROR08}
     integrity = parms['integrity']
+    #If length of integrity is shorter than 64, return corresponding error message
     if len(integrity) < 64:
         return {'status': ERROR11}
- 
+    #If length of integrity is greater than 64, return corresponding error message
     if len(integrity) > 64:
         return {'status': ERROR12}
   
@@ -101,41 +112,53 @@ def _status(parms):
     if light == dark or light == blank or dark == blank:
         return {'status': ERROR03}
     
-    
+    #Construct the string for calculation of 'integrity', one end with <dark>, another end with <light>
     string = ''.join(str(x) for x in board) 
     string1 = string + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(dark)
     string2 = string + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(light)
     #Calculate the 'integrity' 
     integrity1 = hashlib.sha256(string1.encode()).hexdigest()
     integrity2 = hashlib.sha256(string2.encode()).hexdigest()
-    
+    #if the input 'integrity' doesn't match the two, return corresponding error messages.
     if not(integrity1 == parms['integrity'] or integrity2 ==  parms['integrity']):
         return {'status': ERROR09}
     
+    #Create a list to store eight directions, down, up, right, left, down-left, down-right, up-left, up-right 
     Directions = [[1,0],[-1,0],[0,1],[0,-1],[1,-1],[1,1],[-1,-1],[-1,1]]
+    #Create dictionary to store the number of light and dark that could be placed on board
     result = {light:0, dark:0}
     
     
+    #Scan the board. i is the row number, j is the column number.
     for i in range(size):
         for j in range(size):
+            #Get the current index based on the row, column and size of the board.
             index = get_index(i,j,size)
+            #If the token is blank, means it is possible to place a light or dark.
             if board[index] == blank:
+                #From this token, check eight directions one by one.
                 for direction in Directions:
+                    #Create list to keep track of tokens as it moves.
                     stack = [ ]
+                    #If is_valid() return the token that is dark or light, update the number in result.
                     key = is_valid(i,j,size,board,tokens,stack,direction)
                     if key in result:
                         result[key] += 1
     
+    #if both value are greater than 0, next_token can be light or dark
     if result[light] > 0 and result[dark] > 0:
         return {'status': 'ok'}
+    #If only  light is greater than 0, next_token can only be light
     if result[light] > 0:
         return {'status': 'light'}
+    #If only  dark is greater than 0, next_token can only be dark
     if result[dark] > 0:
         return {'status': 'dark'}
-    
+    #If neither the dark and light could be placed, the game is end
     return {'status': 'end'}
     
 def get_index(row, column, size):
+    #check if the row is column is valid, return -1 if out of bounds, return index in the board if valid.
     if row >= 0 and row <size and column >= 0 and column < size:
         return row*size + column
     else:
@@ -143,19 +166,23 @@ def get_index(row, column, size):
 
 
 def is_valid(row, column, size, board, tokens, stack, direction):
+    #Move forward according to the direction
     row += direction[0]
     column += direction[1]
+    #if index is out of bounds, return -1 to show current path is invalid
     i = get_index(row, column, size)
     if i == -1:
         return -1
-    current = board[i]
     
+    current = board[i]
+    #If current token is blank, return -1 to show current path is invalid
     if current == tokens['blank']:
         return -1
-    
+    #If the current token is not the same with previous, return current token to show that this token can place on the original blank token
     if stack and current != stack[-1]:
         return current
     else:
+        #If the current is the same with previous, store the current token and keep moving
         stack.append(current)
         return is_valid(row, column, size, board, tokens, stack, direction)
    
