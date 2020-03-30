@@ -1,6 +1,7 @@
 """
     Created to test code segment
     Baselined: Mar 28, 2020
+    Modified: Mar 29, 2020
     @Author: Kun Ding
 """
 import collections
@@ -72,7 +73,7 @@ board3 = [1,1,1,1,1,1,1,1,
 string_3 = ''.join(str(x) for x in board3) 
 string_3_dark = string_3 + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(dark)
 string_3_light = string_3 + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(light)
-string_3_none = string_3 + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/'
+string_3_none = string_3 + '/' + str(light) + '/' +str(dark) + '/' + str(blank)
 integrity3 = '8a1c0659575e8cdd01b2e4ff3f431c845e7e7960279bb7abfaa5465e4a755354'
 next_dark_3 = hashlib.sha256(string_3_dark.encode()).hexdigest()
 next_light_3 = hashlib.sha256(string_3_light.encode()).hexdigest()
@@ -81,6 +82,20 @@ print(next_dark_3)
 print(next_light_3)
 print(next_none_3)
 print(integrity3)
+
+
+
+light, dark, blank = 1, 2, 3
+board=[3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,2,3,3,3,3,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3]
+string = ''.join(str(x) for x in board) 
+integrity = '66271cbb9037c515e73be3a74a37259a179f2d2861cf4e82130cd579a2141093'
+string1 = string + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(dark)
+string2 = string + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(light)
+
+integrity1 = hashlib.sha256(string1.encode()).hexdigest()
+integrity2 = hashlib.sha256(string2.encode()).hexdigest()
+
+print(integrity1 == integrity, integrity2 == integrity)
 
 
 

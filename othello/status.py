@@ -2,6 +2,7 @@
     Created to determine the status of the game
     Baselined: Mar 25, 2020
     Modified: Mar 28, 2020
+    Modified: Mar 29, 2020
     @Author: Kun Ding
 """
 
@@ -12,11 +13,12 @@ import hashlib
 
 
 def _status(parms):
+    #Create a dictionary to store the value of three tokens and set the default value respectively
     tokens = {'light': 1, 'dark': 2, 'blank': 0}
 
-    
-    ERROR01 = 'error: light/blank/dark/size non-integer'
-    ERROR02 = 'error: light/blank/dark/size out of bounds'
+    #Define the proper error message
+    ERROR01 = 'error: light/blank/dark non-integer'
+    ERROR02 = 'error: light/blank/dark out of bounds'
     ERROR03 = 'error: light/blank/dark not unique'
     ERROR04 = 'error: missing board'
     ERROR05 = 'error: non-square board'
@@ -25,6 +27,7 @@ def _status(parms):
     ERROR08 = 'error: missing integrity'
     ERROR09 = 'error: invalid integrity'
     
+    #Validate input
     if 'light' in parms:
         try:
             light = int(parms['light'])
@@ -66,6 +69,8 @@ def _status(parms):
     if light == dark or light == blank or dark == blank:
         return {'status': ERROR03}
     
+    
+    #If 'board' is missing or the value of it is None, return corresponding error message
     if 'board' not in parms or parms['board'] == None:
         return {'status': ERROR04}
     
@@ -91,11 +96,11 @@ def _status(parms):
     integrity1 = hashlib.sha256(string1.encode()).hexdigest()
     integrity2 = hashlib.sha256(string2.encode()).hexdigest()
     
-#     if not(integrity1 == parms['integrity'] or integrity2 ==  parms['integrity']):
-#         return {'status': ERROR09}
+    if not(integrity1 == parms['integrity'] or integrity2 ==  parms['integrity']):
+        return {'status': ERROR09}
     
     Directions = [[1,0],[-1,0],[0,1],[0,-1],[1,-1],[1,1],[-1,-1],[-1,1]]
-    result = {light:0,dark:0}
+    result = {light:0, dark:0}
     
     
     for i in range(size):
@@ -109,7 +114,7 @@ def _status(parms):
                         result[key] += 1
     
     if result[light] > 0 and result[dark] > 0:
-        return {'status':'ok'}
+        return {'status': 'ok'}
     if result[light] > 0:
         return {'status': 'light'}
     if result[dark] > 0:
@@ -118,7 +123,7 @@ def _status(parms):
     return {'status': 'end'}
     
 def get_index(row, column, size):
-    if row > 0 and row <size and column >= 0 and column < size:
+    if row >= 0 and row <size and column >= 0 and column < size:
         return row*size + column
     else:
         return -1
