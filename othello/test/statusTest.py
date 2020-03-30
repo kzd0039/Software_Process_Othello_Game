@@ -188,7 +188,7 @@ class statusTest(unittest.TestCase):
     def test200_040(self):
         self.setOperation('status')
         self.setLight('5')
-        self.setLight('6')
+        self.setDark('6')
         self.setBlank('0')
         board = [0,0,0,0,0,0,
                  0,0,0,0,0,0,
