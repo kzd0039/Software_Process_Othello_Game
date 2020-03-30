@@ -26,6 +26,7 @@ def _status(parms):
     ERROR07 = 'error: board with non-light/dark/blank tokens'
     ERROR08 = 'error: missing integrity'
     ERROR09 = 'error: invalid integrity'
+    ERROR10 = 'error: board size out of bounds'
     
     #Validate input
     if 'light' in parms:
@@ -79,6 +80,8 @@ def _status(parms):
     size = int(math.sqrt(len_board))
     if size**2 != len_board:
         return {'status': ERROR05}
+    if size < 6 or size > 10:
+        return {'status': ERROR10}
     if size%2 != 0:
         return {'status': ERROR06}
     count = collections.Counter(board)
