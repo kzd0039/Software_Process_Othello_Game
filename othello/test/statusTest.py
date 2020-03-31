@@ -633,7 +633,7 @@ class statusTest(unittest.TestCase):
         self.setBoard(board)
         self.setIntegrity(integrity)
      
-        correct = {'status': self.error2}
+        correct = {'status': self.error1}
         result = status._status(self.inputDictionary)
         self.assertEqual(correct, result)       
         
