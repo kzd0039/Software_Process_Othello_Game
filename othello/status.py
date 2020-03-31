@@ -130,7 +130,7 @@ def _status(parms):
     result = {light:0, dark:0}
     
     
-    #Scan the board. i is the row number, j is the column number.
+    #Scan the board in row major. i is the row number, j is the column number.
     for i in range(size):
         for j in range(size):
             #Get the current index based on the row, column and size of the board.
