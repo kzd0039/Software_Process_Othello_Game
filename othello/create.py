@@ -102,7 +102,7 @@ def _create(parms):
 
     
     #Construct the string for calculation of 'integrity'
-    string = ''.join(str(x) for x in result['board']) 
+    string = ''.join(str(result['board'][i+j*size]) for i in range(size) for j in range(size)) 
     string = string + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(dark)
     #Calculate the 'integrity' 
     result['integrity'] = hashlib.sha256(string.encode()).hexdigest()
