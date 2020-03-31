@@ -834,6 +834,6 @@ class statusTest(unittest.TestCase):
         integrity = 'b42a70b9f5b1064d1a1c594f466ec6cb1c2383694a8fe9f660d7fb07bcdce637'
         self.setIntegrity(integrity)
        
-        correct = {'status': self.error3}
+        correct = {'status': self.error7}
         result = status._status(self.inputDictionary)
         self.assertEqual(correct, result)      
