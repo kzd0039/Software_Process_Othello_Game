@@ -113,14 +113,14 @@ def _status(parms):
         return {'status': ERROR03}
     
     #Construct the string for calculation of 'integrity', one end with <dark>, another end with <light>
-    string = ''.join(str(x) for x in board) 
+    string = ''.join(str(board[i+j*size]) for i in range(size) for j in range(size))  
     string1 = string + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(dark)
     string2 = string + '/' + str(light) + '/' +str(dark) + '/' + str(blank) + '/' + str(light)
     #Calculate the 'integrity' 
     integrity1 = hashlib.sha256(string1.encode()).hexdigest()
     integrity2 = hashlib.sha256(string2.encode()).hexdigest()
     #if the input 'integrity' doesn't match the two, return corresponding error messages.
-    if not(integrity1 == parms['integrity'] or integrity2 ==  parms['integrity']):
+    if not(integrity1 == integrity or integrity2 ==  integrity):
         return {'status': ERROR09}
     
     #Create a list to store eight directions, down, up, right, left, down-left, down-right, up-left, up-right 
