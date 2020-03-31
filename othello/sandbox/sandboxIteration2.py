@@ -18,6 +18,8 @@ board1 = [0,0,0,0,0,0,
 
 count1 = collections.Counter(board1)
 print(count1,count1[0],count1[3])
+print(set(count1.keys())==set([0,1,2]))
+
 
 board2 = [0,0,0,0,0,0,
           0,0,0,0,0,0,

@@ -91,8 +91,8 @@ def _status(parms):
     if size%2 != 0:
         return {'status': ERROR06}
     count = collections.Counter(board)
-    #If non-dark/blank/light values occur in the board, return corresponding error message
-    if count[light] + count[dark] + count[blank] != len_board:
+    #If count contains keys other than light/dark/blank, return corresponding error message.
+    if set(count.keys()) != set([light, dark, blank]):
         return {'status': ERROR07}
     
     
