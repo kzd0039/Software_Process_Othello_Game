@@ -823,7 +823,7 @@ class statusTest(unittest.TestCase):
         self.setOperation('status')
         self.setLight('1')
         self.setDark('2')
-        self.setBlank('3')
+        self.setBlank('0')
         board =[3,3,3,3,3,3,
                 3,3,3,3,3,3,
                 3,3,1,2,3,3,
