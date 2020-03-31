@@ -666,7 +666,17 @@ class statusTest(unittest.TestCase):
         result = status._status(self.inputDictionary)
         self.assertEqual(correct, result)       
         
-        
+    def test200_934(self):
+        self.setOperation('status')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('3')
+        integrity = '1e3f8bb2d56c5b4483c9f3dccf7bc16d339534a98020e9a28383aaa219f3e64d'
+        self.setIntegrity(integrity)
+     
+        correct = {'status': self.error4}
+        result = status._status(self.inputDictionary)
+        self.assertEqual(correct, result)   
         
         
         
