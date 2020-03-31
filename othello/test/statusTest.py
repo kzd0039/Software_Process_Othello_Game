@@ -704,7 +704,6 @@ class statusTest(unittest.TestCase):
         self.setBoard(board)
         integrity = 'f01977c17f801c43eeb13fb9f74a49bd0c761db3cdffe01510f47ddd23ab465'
         self.setIntegrity(integrity)
-        self.setBoard(None)
         correct = {'status': self.error11}
         result = status._status(self.inputDictionary)
         self.assertEqual(correct, result)         
