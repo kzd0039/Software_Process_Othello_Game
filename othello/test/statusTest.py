@@ -4,6 +4,7 @@
     Modified: Mar 28, 2020
     Modified: Mar 29, 2020
     Modified: Mar 30, 2020
+    Modified: Mar 31, 2020
     @Author: Kun Ding
 """
 
@@ -50,8 +51,81 @@ class statusTest(unittest.TestCase):
     def setExtra(self, extra):
         self.inputDictionary['extra'] = extra
     
-    
-    
+#200 status
+#    Desired level of confidence:    boundary value analysis
+#    Input-output Analysis
+#        inputs -> dictionary:  
+#                    key        value
+#                    'light' -> integer .GE.0 .LE.9, optional, defaulting to 1, arrives unvalidated 
+#                    'dark'  -> integer .GE.0 .LE.9, optional,  defaulting to 2, arrives unvalidated 
+#                    'blank' -> integer .GE.0 .LE.9, optional,  defaulting to 0, arrives unvalidated 
+#                    'board' -> list of integers arranged in row-major order to form an n x n grid, 
+#                               n is an even integer in the range [6,16]. 
+#                               The list consists only of values associated with light, dark, and blank.  Mandatory.  Arrives unvalidated.  
+#                    'integrity' -> a 64-character sha256 hash hexdigest. Mandatory.  Arrives unvalided.                    
+#        outputs -> dictionary:
+#                    key        value
+#                  'status' -> string, value = 'error: xxx', if any violation found
+#                              string, value = 'error: xxx', if light, dark, blank is not unique
+#                              string, value = 'error: xxx', if integrity is invalid
+#                              string, value = 'ok', if both light and dark can be placed on the board
+#                              string, value = 'light', if only light can be placed on the board
+#                              string, value = 'dark', if only dark can be placed on the board
+#                              string, value = 'end', if neither light or dark can be placed on the board
+#    Happy path analysis:
+#        Input description
+#        Happy path test 010:  nominal light, nominal dark, nominal blank, nominal board, nominal integrity
+#        Happy path test 020:  high bound light, nominal dark, nominal blank, nominal size, nominal board, nominal integrity
+#        Happy path test 021:  low bound light, nominal dark, nominal blank, nominal size, nominal board, nominal integrity
+#        Happy path test 022:  missing light, nominal dark, nominal blank, nominal size, nominal board, nominal integrity
+#        Happy path test 030:  nominal light, low bound dark, nominal blank, nominal size, nominal board, nominal integrity
+#        Happy path test 031:  nominal light, high bound dark, nominal blank, nominal size, nominal board, nominal integrity
+#        Happy path test 032:  nominal light, missing dark, nominal blank, nominal size, nominal board, nominal integrity
+#        Happy path test 040:  nominal light, nominal dark, low bound blank, nominal size, nominal board, nominal integrity
+#        Happy path test 041:  nominal light, nominal dark, high bound blank, nominal size, nominal board, nominal integrity
+#        Happy path test 042:  nominal light, nominal dark, missing blank, nominal size, nominal board, nominal integrity
+#        Happy path test 050:  nominal light, nominal dark, nominal blank, low bound size board with nominal elements, nominal integrity
+#        Happy path test 051:  nominal light, nominal dark, nominal blank, high bound size board with nominal elements, nominal integrity
+#        Happy path test 060:  nominal light, nominal dark, nominal blank, nominal board, dark next player
+#        Happy path test 061:  nominal light, nominal dark, nominal blank, nominal board, light next player
+#        Happy path test 070:  status is "ok"
+#        Happy path test 071:  status is "dark"
+#        Happy path test 072:  status is "light"
+#        Happy path test 073:  status is "end"
+
+
+#    Sad path analysis:
+#        Input description
+#        Sad path test 900:  above bound light, nominal dark, nominal blank, nominal board, nominal integrity
+#        Sad path test 901:  below bound light, nominal dark, nominal blank, nominal size
+#        Sad path test 902:  non-integer light, nominal dark, nominal blank, nominal size
+#        Sad path test 903:  null light, nominal dark, nominal blank, nominal size
+#        Sad path test 910:  nominal light, above bound dark, nominal blank, nominal size
+#        Sad path test 911:  nominal light, below bound dark, nominal blank, nominal size
+#        Sad path test 912:  nominal light, non-integer dark, nominal blank, nominal size
+#        Sad path test 913:  nominal light, null dark, nominal blank, nominal size
+#        Sad path test 920:  nominal light, nominal dark, above bound blank, nominal size
+#        Sad path test 921:  nominal light, nominal dark, below bound blank, nominal size
+#        Sad path test 922:  nominal light, nominal dark, non-integer blank, nominal size
+#        Sad path test 923:  nominal light, nominal dark, null blank, nominal size
+#        Sad path test 930:  nominal light, nominal dark, nominal blank, non-square board, nominal integrity
+#        Sad path test 933:  nominal light, nominal dark, nominal blank, odd x odd board, nominal integrity
+#        Sad path test 934:  nominal light, nominal dark, nominal blank, missing board, nominal integrity
+#        Sad path test 935:  nominal light, nominal dark, nominal blank, null board, nominal integrity
+#        Sad path test 940:  nominal light, nominal dark, nominal blank, nominal board, short integrity 
+#        Sad path test 941:  nominal light, nominal dark, nominal blank,  nominal board, long integrity
+#        Sad path test 942:  nominal light, nominal dark, nominal blank, nominal board, non hex characters
+#        Sad path test 943:  nominal light, nominal dark, nominal blank,  nominal board, missing integrity
+#        Sad path test 944:  nominal light, nominal dark, nominal blank,  nominal board, null integrity
+#        Sad path test 950:  nominal light, dark = light, nominal blank, nominal board, nominal integrity
+#        Sad path test 951:  nominal light, nominal dark, blank = light, nominal board, nominal integrity
+#        Sad path test 952:  nominal light, nominal dark, blank = dark, nominal board, nominal integrity
+#        Sad path test 953:  nominal light, nominal dark, nominal blank, board with non-light/dark/blank values, nominal integrity
+#        Sad path test 954:  nominal light, nominal dark, nominal blank, nominal board, invalid integrity
+#        Sad path test 955:  nominal light, nominal dark, nominal blank,  board with non-light/dark/blank tokens, nominal integrity
+
+
+    #Happy path  
     def test200_010(self):
         self.setOperation('status')
         self.setLight('1')
