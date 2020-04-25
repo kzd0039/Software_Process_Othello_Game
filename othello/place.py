@@ -68,6 +68,10 @@ def _place(parms):
     row = location[0] - 1
     column = location[1] - 1
     
+    ERROR05 = 'error: location out-of-bound'
+    next_token_position = get_index(row, column, size)
+    if next_token_position == -1:
+        return {'status': ERROR05}
     
     Directions = [[1,0],[-1,0],[0,1],[0,-1],[1,-1],[1,1],[-1,-1],[-1,1]]
     #Create dictionary to store the number of light and dark that could be placed on board
