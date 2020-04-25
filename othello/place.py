@@ -10,9 +10,15 @@ def _place(parms):
     token = {'light':1, 'dark':2, 'blank':0}
     if 'light' in parms:
         r = isValidTokens(parms['light'])
-        if  not isinstance(r, int):
+        if not isinstance(r, int):
             return r
         token['light'] = r
+        
+    if 'dark' in parms:
+        r = isValidTokens(parms['dark'])
+        if not isinstance(r, int):
+            return r
+        token['dark'] = r
 
 def isValidTokens(token):
     ERROR01 = 'error: light/blank/dark non-integer'
