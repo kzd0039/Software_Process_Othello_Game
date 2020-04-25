@@ -58,7 +58,7 @@ class statusTest(unittest.TestCase):
         self.setLight('X')
         
         correct = {'error': self.error2}
-        result = place(self.inputDictionary)
+        result = place._place(self.inputDictionary)
         
         self.assertEqual(result, correct)
         
