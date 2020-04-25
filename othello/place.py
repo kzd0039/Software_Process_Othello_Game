@@ -61,13 +61,18 @@ def _place(parms):
     if 'integrity' not in parms or parms['integrity'] == None:
         return {'status': ERROR04}
     
-    token_to_place = isValidIntegrity(parms['integrity'], board, light, dark, blank, size)
-    if not isinstance(token_to_place, str):
-        return token_to_place
+    result = isValidIntegrity(parms['integrity'], board, light, dark, blank, size)
+    if not isinstance(result, str):
+        return result
+    token_to_place = str(tokens[result])
+    if result == 'light':
+        opposite = str(tokens['dark'])
+    else:
+        opposite = str(tokens['light'])
+    
     
     row = location[0] - 1
     column = location[1] - 1
-    
     ERROR05 = 'error: location out-of-bound'
     next_token_position = get_index(row, column, size)
     if next_token_position == -1:
@@ -79,8 +84,28 @@ def _place(parms):
     
     Directions = [[1,0],[-1,0],[0,1],[0,-1],[1,-1],[1,1],[-1,-1],[-1,1]]
     #Create dictionary to store the number of light and dark that could be placed on board
-    result = {light:0, dark:0}
+    pair_position = [ ]
     
+    for direction in Directions:
+        row += direction[0]
+        column += direction[1]
+        current_index = get_index(row, column, size)
+        current_token = board[current_index]
+        while current_index != -1 and current_token == opposite:
+            row += direction[0]
+            column += direction[1]
+            current_index = get_index(row, column, size)
+            current_token = board[current_index]
+            
+        if current_index != -1 and current_token == token_to_place:
+            pair_position.append([row, column])
+    
+    ERROR07 = 'error: incorrect location'
+    if not pair_position:
+        return {'status': ERROR07} 
+    
+    
+    result = {light:0, dark:0}
     
 def isValidTokens(token):
     ERROR01 = 'error: light/blank/dark non-integer'
@@ -169,7 +194,10 @@ def get_index(row, column, size):
     else:
         return -1
 
-def isValidTokenToPlace(row, column, size, board, tokens, stack, direction):
+
+
+
+def is_valid(row, column, size, board, tokens, stack, direction):
     #Move forward according to the direction
     row += direction[0]
     column += direction[1]
@@ -188,7 +216,7 @@ def isValidTokenToPlace(row, column, size, board, tokens, stack, direction):
     else:
         #If the current is the same with previous, store the current token and keep moving
         stack.append(current)
-        return isValidTokenToPlace(row, column, size, board, tokens, stack, direction)
+        return is_valid(row, column, size, board, tokens, stack, direction)
    
 
 
