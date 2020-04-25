@@ -70,6 +70,7 @@ def isValidBoard(tokens, input_board):
     ERROR02 = 'error: non-square board'
     ERROR03 = 'error: board size out of bounds'
     ERROR04 = 'error: odd board'
+    ERROR05 = 'error: board with non-light/dark/blank tokens'
     
     try:
         board = input_board[1:-1].split(',')
@@ -88,6 +89,16 @@ def isValidBoard(tokens, input_board):
 
     if size%2 != 0:
         return {'status': ERROR04}
+    
+    light = str(tokens['light'])
+    dark = str(tokens['dark'])
+    blank = str(tokens['blank'])
+    
+    count = collections.Counter(board)
+    if count[light] + count[dark] + count[blank] != len_board:
+        return {'status': ERROR05}
+    
+    return board
   
 
 
