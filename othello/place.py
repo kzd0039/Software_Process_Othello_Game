@@ -31,14 +31,14 @@ def _place(parms):
     blank = tokens['blank'] 
     
     ERROR01 = 'error: light/blank/dark not unique'
-    if light == dark or dark == blank or dark == blank:
+    if light == dark or dark == blank or light == blank:
         return {'status': ERROR01}
     
     ERROR02 = 'error: missing board'
     if 'board' not in parms:
         return {'status': ERROR02}
 
-    ERROR02 = 'error: invalid board'
+    ERROR03 = 'error: invalid board'
     
     
 def isValidTokens(token):
