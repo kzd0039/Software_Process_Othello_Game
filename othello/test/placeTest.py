@@ -119,7 +119,37 @@ class statusTest(unittest.TestCase):
         
         self.assertEqual(result, correct)     
         
+    def test300_920BlankNonInteger(self):
+        self.setOperation('place')
+        self.setBlank('X')
+        correct = {'error': self.error1}
+        result = place._place(self.inputDictionary)
         
+        self.assertEqual(result, correct)
+        
+    def test300_921BlankNonInteger(self):
+        self.setOperation('place')
+        self.setBlank('1.5')
+        correct = {'error': self.error1}
+        result = place._place(self.inputDictionary)
+        
+        self.assertEqual(result, correct)
+        
+    def test300_922BlankOutOfUpperBound(self):
+        self.setOperation('place')
+        self.setBlank('10')
+        correct = {'error': self.error2}
+        result = place._place(self.inputDictionary)
+        
+        self.assertEqual(result, correct) 
+        
+    def test300_923BlankOutOfLowerBound(self):
+        self.setOperation('place')
+        self.setBlank('-1')
+        correct = {'error': self.error2}
+        result = place._place(self.inputDictionary)
+        
+        self.assertEqual(result, correct)       
         
         
         
