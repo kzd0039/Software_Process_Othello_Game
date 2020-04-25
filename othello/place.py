@@ -7,31 +7,31 @@
 
 
 def _place(parms):
-    token = {'light':1, 'dark':2, 'blank':0}
+    tokens = {'light':1, 'dark':2, 'blank':0}
     if 'light' in parms:
         r = isValidTokens(parms['light'])
         if not isinstance(r, int):
             return r
-        token['light'] = r
+        tokens['light'] = r
         
     if 'dark' in parms:
         r = isValidTokens(parms['dark'])
         if not isinstance(r, int):
             return r
-        token['dark'] = r
+        tokens['dark'] = r
         
     if 'blank' in parms:
         r = isValidTokens(parms['blank'])
         if not isinstance(r, int):
             return r
-        token['blank'] = r
+        tokens['blank'] = r
 
     
     ERROR01 = 'error: missing board'
     if 'board' not in parms:
         return {'status': ERROR01}
 
-    
+    ERROR02 = 'error: invalid board'
     
     
 def isValidTokens(token):
@@ -47,3 +47,7 @@ def isValidTokens(token):
         return {'status': ERROR02}
     
     return int_token
+
+
+def isValidBoard(tokens, board):
+    pass

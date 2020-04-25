@@ -4,3 +4,4 @@
 '''
 
 print(isinstance(2, int))
+
