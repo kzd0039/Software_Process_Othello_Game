@@ -10,9 +10,9 @@ def _place(parms):
     token = {'light':1, 'dark':2, 'blank':0}
     if 'light' in parms:
         r = isValidTokens(parms['light'])
-        if  r != True:
+        if  not isinstance(r, int):
             return r
-
+        token['light'] = r
 
 def isValidTokens(token):
     ERROR01 = 'error: light/blank/dark non-integer'
@@ -25,5 +25,5 @@ def isValidTokens(token):
     #If value of 'light' is not in range [0,9], return corresponding error message
     if int_token > 9 or int_token < 0:
         return {'error': ERROR02}
-#     #Overwrite the value of 'light'
-#     tokens['light'] = light
+    
+    return int_token

@@ -62,7 +62,15 @@ class statusTest(unittest.TestCase):
         
         self.assertEqual(result, correct)
         
-    def test300_901LightOutOfUpperBound(self):
+    def test300_901LightNonInteger(self):
+        self.setOperation('place')
+        self.setLight('1.5')
+        correct = {'error': self.error1}
+        result = place._place(self.inputDictionary)
+        
+        self.assertEqual(result, correct)
+        
+    def test300_903LightOutOfUpperBound(self):
         self.setOperation('place')
         self.setLight('10')
         correct = {'error': self.error2}
@@ -70,7 +78,7 @@ class statusTest(unittest.TestCase):
         
         self.assertEqual(result, correct) 
         
-    def test300_902LightOutOfLowerBound(self):
+    def test300_904LightOutOfLowerBound(self):
         self.setOperation('place')
         self.setLight('-1')
         correct = {'error': self.error2}
