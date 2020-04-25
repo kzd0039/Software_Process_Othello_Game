@@ -5,3 +5,4 @@
 
 print(isinstance(2, int))
 
+print(''[1:-1].split(','))
