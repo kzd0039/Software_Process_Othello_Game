@@ -268,12 +268,7 @@ class statusTest(unittest.TestCase):
         self.setLight('3')
         self.setDark('2')
         self.setBlank('1')
-        board = '[1,1,1,1,1,1,\
-                 1,1,1,1,1,1,\
-                 1,1,3,2,1,1,\
-                 1,1,2,3,1,1,\
-                 1,1,1,1,1,1,\
-                 1,1,1,1,1,1]'
+        board = '[1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,2,1,1,1,1,2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1]'
         self.setBoard(board)
         correct = {'status': self.error9}
         result = place._place(self.inputDictionary)
@@ -284,12 +279,7 @@ class statusTest(unittest.TestCase):
         self.setLight('3')
         self.setDark('2')
         self.setBlank('1')
-        board = '[1,1,1,1,1,1,\
-                 1,1,1,1,1,1,\
-                 1,1,3,2,1,1,\
-                 1,1,2,3,1,1,\
-                 1,1,1,1,1,1,\
-                 1,1,1,1,1,1]'
+        board = '[1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,2,1,1,1,1,2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1]'
         self.setBoard(board)
         self.setLocation(None)
         correct = {'status': self.error9}
