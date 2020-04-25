@@ -10,6 +10,7 @@ class statusTest(unittest.TestCase):
     def setUp(self):
         self.inputDictionary = {}
         self.error1 = 'error: light/blank/dark out of bounds'
+        self.error2 = 'error: light/blank/dark non-integer'
 #         self.error3 = 'error: light/blank/dark not unique'
 #         self.error4 = 'error: missing board'
 #         self.error5 = 'error: non-square board'
@@ -52,17 +53,14 @@ class statusTest(unittest.TestCase):
         
         
         
-    def test300_900LightOutOfBound(self):
-        self.setLight('10')
         
-        correct = self.error1
+    def test300_900LightNonInteger(self):
+        self.setLight('X')
+        
+        correct = {'error': self.error2}
         result = place(self.inputDictionary)
         
         self.assertEqual(result, correct)
-        
-        
-        
-        
         
         
         
