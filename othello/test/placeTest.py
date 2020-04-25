@@ -17,6 +17,7 @@ class statusTest(unittest.TestCase):
         self.error6 = 'error: board size out of bounds'
         self.error7 = 'error: odd board'
         self.error8 = 'error: board with non-light/dark/blank tokens'
+        self.error9 = 'error: missing location'
 #         self.error8 = 'error: missing integrity'
 #         self.error9 = 'error: invalid integrity'
 
@@ -261,5 +262,50 @@ class statusTest(unittest.TestCase):
         correct = {'status': self.error8}
         result = place._place(self.inputDictionary)
         self.assertEqual(correct, result) 
+
+    def test300_950LocationMissing(self):
+        self.setOperation('place')
+        self.setLight('3')
+        self.setDark('2')
+        self.setBlank('1')
+        board = '[1,1,1,1,1,1,\
+                 1,1,1,1,1,1,\
+                 1,1,3,2,1,1,\
+                 1,1,2,3,1,1,\
+                 1,1,1,1,1,1,\
+                 1,1,1,1,1,1]'
+        self.setBoard(board)
+        correct = {'status': self.error9}
+        result = place._place(self.inputDictionary)
+        self.assertEqual(correct, result) 
+
+    def test300_951LocationEqualsNone(self):
+        self.setOperation('place')
+        self.setLight('3')
+        self.setDark('2')
+        self.setBlank('1')
+        board = '[1,1,1,1,1,1,\
+                 1,1,1,1,1,1,\
+                 1,1,3,2,1,1,\
+                 1,1,2,3,1,1,\
+                 1,1,1,1,1,1,\
+                 1,1,1,1,1,1]'
+        self.setBoard(board)
+        self.setLocation(None)
+        correct = {'status': self.error9}
+        result = place._place(self.inputDictionary)
+        self.assertEqual(correct, result) 
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -37,9 +37,6 @@ def _place(parms):
         return {'status': ERROR01}
     
     
-    
-    
-    
     ERROR02 = 'error: missing board'
     if 'board' not in parms or parms['board'] == None:
         return {'status': ERROR02}
