@@ -23,9 +23,8 @@ class statusTest(unittest.TestCase):
         self.error12 = 'error: invalid integrity'
         self.error13 = 'error: incorrect integrity'
 
-#         self.error11 = 'error: short integrity'
-#         self.error12 = 'error: long integrity'
-#         
+
+      
     def tearDown(self):
         self.inputDictionary = {}
         

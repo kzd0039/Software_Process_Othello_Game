@@ -28,9 +28,9 @@ def _place(parms):
             return r
         tokens['blank'] = r
     
-    light = tokens['light']
-    dark = tokens['dark']
-    blank = tokens['blank'] 
+    light = str(tokens['light'])
+    dark = str(tokens['dark'])
+    blank = str(tokens['blank'])
     
     ERROR01 = 'error: light/blank/dark not unique'
     if light == dark or dark == blank or light == blank:
@@ -61,9 +61,9 @@ def _place(parms):
     if 'integrity' not in parms or parms['integrity'] == None:
         return {'status': ERROR04}
     
-    integrity = isValidIntegrity(parms['integrity'])
-    if not isinstance(integrity, str):
-        return integrity
+    token_to_place = isValidIntegrity(parms['integrity'], board, light, dark, blank)
+    if not isinstance(token_to_place, str):
+        return token_to_place
     
 def isValidTokens(token):
     ERROR01 = 'error: light/blank/dark non-integer'
@@ -125,11 +125,23 @@ def isValidLocation(input_location):
     return location
     
 
-def isValidIntegrity(input_integrity):
+def isValidIntegrity(input_integrity, board, light, dark, blank):
     ERROR01 = 'error: invalid integrity'
+    ERROR02 = 'error: incorrect integrity'
     if len(input_integrity) != 64:
         return{'status': ERROR01}
-  
+        
+    string1 = ''.join(board) + light + dark + blank + light
+    string2 = ''.join(board) + light + dark + blank + dark 
+    integrity1 = hashlib.sha256(string1.encode()).hexdigest()
+    integrity2 = hashlib.sha256(string2.encode()).hexdigest()
+    
+    if input_integrity == integrity1:
+        return 'light'
+    if input_integrity == integrity2:
+        return 'dark'
+    return {'status': ERROR02}
+
 
 def get_index(row, column, size):
     #check if the row is column is valid, return -1 if out of bounds, return index in the board if valid.
