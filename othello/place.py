@@ -26,7 +26,10 @@ def _place(parms):
             return r
         token['blank'] = r
 
-        
+    
+    ERROR01 = 'error: missing board'
+    if 'board' not in parms:
+        return {'status': ERROR01}
 
     
     
