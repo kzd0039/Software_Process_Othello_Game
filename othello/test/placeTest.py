@@ -70,7 +70,7 @@ class statusTest(unittest.TestCase):
         
         self.assertEqual(result, correct)
         
-    def test300_903LightOutOfUpperBound(self):
+    def test300_902LightOutOfUpperBound(self):
         self.setOperation('place')
         self.setLight('10')
         correct = {'error': self.error2}
@@ -78,7 +78,7 @@ class statusTest(unittest.TestCase):
         
         self.assertEqual(result, correct) 
         
-    def test300_904LightOutOfLowerBound(self):
+    def test300_903LightOutOfLowerBound(self):
         self.setOperation('place')
         self.setLight('-1')
         correct = {'error': self.error2}
@@ -87,7 +87,37 @@ class statusTest(unittest.TestCase):
         self.assertEqual(result, correct) 
         
         
+    def test300_910DarkNonInteger(self):
+        self.setOperation('place')
+        self.setDark('X')
+        correct = {'error': self.error1}
+        result = place._place(self.inputDictionary)
         
+        self.assertEqual(result, correct)
+        
+    def test300_911DarkNonInteger(self):
+        self.setOperation('place')
+        self.setDark('1.5')
+        correct = {'error': self.error1}
+        result = place._place(self.inputDictionary)
+        
+        self.assertEqual(result, correct)
+        
+    def test300_912DarkOutOfUpperBound(self):
+        self.setOperation('place')
+        self.setDark('10')
+        correct = {'error': self.error2}
+        result = place._place(self.inputDictionary)
+        
+        self.assertEqual(result, correct) 
+        
+    def test300_913DarkOutOfLowerBound(self):
+        self.setOperation('place')
+        self.setDark('-1')
+        correct = {'error': self.error2}
+        result = place._place(self.inputDictionary)
+        
+        self.assertEqual(result, correct)     
         
         
         
