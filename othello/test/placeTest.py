@@ -13,7 +13,7 @@ class statusTest(unittest.TestCase):
         self.error2 = 'error: light/blank/dark out of bounds'
         self.error3 = 'error: light/blank/dark not unique'
         self.error4 = 'error: missing board'
-#         self.error5 = 'error: non-square board'
+        self.error5 = 'error: non-square board'
 #         self.error6 = 'error: odd board'
 #         self.error7 = 'error: board with non-light/dark/blank tokens'
 #         self.error8 = 'error: missing integrity'
@@ -45,14 +45,11 @@ class statusTest(unittest.TestCase):
         
     def setLocation(self, location):
         self.inputDictionary['location'] = location
-        
-        
+          
     def setExtra(self, extra):
         self.inputDictionary['extra'] = extra
         
-        
-        
-        
+         
         
     def test300_900LightNonInteger(self):
         self.setOperation('place')
@@ -85,7 +82,6 @@ class statusTest(unittest.TestCase):
         result = place._place(self.inputDictionary)
         
         self.assertEqual(result, correct) 
-        
         
     def test300_910DarkNonInteger(self):
         self.setOperation('place')
@@ -182,9 +178,7 @@ class statusTest(unittest.TestCase):
         correct = {'status': self.error4}
         result = place._place(self.inputDictionary)
         self.assertEqual(correct, result)   
-        
- 
-    
+         
     def test300_941BoardEqualsNone(self):
         self.setOperation('place')
         self.setLight('3')
@@ -196,9 +190,22 @@ class statusTest(unittest.TestCase):
         result = place._place(self.inputDictionary)
         self.assertEqual(correct, result)   
 
-
-
-
+    def test300_942BoardNonSquare(self):
+        self.setOperation('place')
+        self.setLight('3')
+        self.setDark('2')
+        self.setBlank('1')
+        board = '[1,1,1,1,1,1,\
+                 1,1,1,1,1,1,\
+                 1,1,3,2,1,1,\
+                 1,1,2,3,1,1,\
+                 1,1,1,1,1,1,\
+                 1,1,1,1,1,]'
+        self.setBoard(board)
+      
+        correct = {'status': self.error5}
+        result = place._place(self.inputDictionary)
+        self.assertEqual(correct, result)   
 
 
 
