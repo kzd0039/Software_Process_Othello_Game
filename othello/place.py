@@ -4,7 +4,9 @@
 '''
 
 
-
+import math
+import collections
+import hashlib
 
 def _place(parms):
     tokens = {'light':1, 'dark':2, 'blank':0}
@@ -56,5 +58,42 @@ def isValidTokens(token):
     return int_token
 
 
-def isValidBoard(tokens, board):
-    pass
+def isValidBoard(tokens, input_board):
+    ERROR01 = 'error: non-square board'
+    
+    
+    try:
+        board = input_board[1:-1].split(',')
+    except:
+        pass
+    
+    len_board = len(board)
+    #Get square root of the length of board and convert it to integer
+    size = int(math.sqrt(len_board))
+    #If board is non-square, return corresponding error message
+    if size**2 != len_board:   
+        return {'status': ERROR01}
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
