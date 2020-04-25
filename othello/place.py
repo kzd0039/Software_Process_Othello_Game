@@ -26,6 +26,11 @@ def _place(parms):
             return r
         token['blank'] = r
 
+
+
+    
+    
+    
 def isValidTokens(token):
     ERROR01 = 'error: light/blank/dark non-integer'
     ERROR02 = 'error: light/blank/dark out of bounds'

@@ -12,7 +12,7 @@ class statusTest(unittest.TestCase):
         self.error1 = 'error: light/blank/dark non-integer'
         self.error2 = 'error: light/blank/dark out of bounds'
 #         self.error3 = 'error: light/blank/dark not unique'
-#         self.error4 = 'error: missing board'
+        self.error4 = 'error: missing board'
 #         self.error5 = 'error: non-square board'
 #         self.error6 = 'error: odd board'
 #         self.error7 = 'error: board with non-light/dark/blank tokens'
@@ -151,5 +151,15 @@ class statusTest(unittest.TestCase):
         
         self.assertEqual(result, correct)       
         
-        
+    def test300_930BoardMissing(self):
+        self.setOperation('status')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('3')
+        integrity = '1e3f8bb2d56c5b4483c9f3dccf7bc16d339534a98020e9a28383aaa219f3e64d'
+        self.setIntegrity(integrity)
+     
+        correct = {'status': self.error4}
+        result = place._place(self.inputDictionary)
+        self.assertEqual(correct, result)   
         
