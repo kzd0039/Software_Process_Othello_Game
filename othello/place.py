@@ -45,10 +45,15 @@ def _place(parms):
     if not isinstance(board, list):
         return board
     
+    size = int(math.sqrt(len(board)))
+    
     
     ERROR03 = 'error: missing location'
     if 'location' not in parms or parms['location'] == None:
         return {'status': ERROR03}
+    
+    
+    
     
     
 def isValidTokens(token):
@@ -102,10 +107,21 @@ def isValidBoard(tokens, input_board):
     return board
   
 
+def isValidLocation(input_location, size):
+    ERROR01 = 'error: invalid location'
+    try:
+        location =[int(x) for x in input_location.split(':')]
+    except:
+        return {'status': ERROR01}
+    return location
+    
 
-
-
-
+def get_index(row, column, size):
+    #check if the row is column is valid, return -1 if out of bounds, return index in the board if valid.
+    if row >= 0 and row <size and column >= 0 and column < size:
+        return row*size + column
+    else:
+        return -1
 
 
 
