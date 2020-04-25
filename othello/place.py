@@ -61,7 +61,7 @@ def _place(parms):
     if 'integrity' not in parms or parms['integrity'] == None:
         return {'status': ERROR04}
     
-    token_to_place = isValidIntegrity(parms['integrity'], board, light, dark, blank)
+    token_to_place = isValidIntegrity(parms['integrity'], board, light, dark, blank, size)
     if not isinstance(token_to_place, str):
         return token_to_place
     
@@ -125,14 +125,14 @@ def isValidLocation(input_location):
     return location
     
 
-def isValidIntegrity(input_integrity, board, light, dark, blank):
+def isValidIntegrity(input_integrity, board, light, dark, blank,size):
     ERROR01 = 'error: invalid integrity'
     ERROR02 = 'error: incorrect integrity'
     if len(input_integrity) != 64:
         return{'status': ERROR01}
-        
-    string1 = ''.join(board) + '/' + light +'/' +  dark +'/' +  blank + '/' +  light
-    string2 = ''.join(board) + '/' + light + '/' + dark +'/' +  blank + '/' + dark 
+    string = ''.join(board[i+j*size] for i in range(size) for j in range(size))
+    string1 = string + '/' + light +'/' +  dark +'/' +  blank + '/' +  light
+    string2 = string + '/' + light + '/' + dark +'/' +  blank + '/' + dark 
     integrity1 = hashlib.sha256(string1.encode()).hexdigest()
     integrity2 = hashlib.sha256(string2.encode()).hexdigest()
     
