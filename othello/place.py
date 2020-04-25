@@ -131,8 +131,8 @@ def isValidIntegrity(input_integrity, board, light, dark, blank):
     if len(input_integrity) != 64:
         return{'status': ERROR01}
         
-    string1 = ''.join(board) + light + dark + blank + light
-    string2 = ''.join(board) + light + dark + blank + dark 
+    string1 = ''.join(board) + '/' + light +'/' +  dark +'/' +  blank + '/' +  light
+    string2 = ''.join(board) + '/' + light + '/' + dark +'/' +  blank + '/' + dark 
     integrity1 = hashlib.sha256(string1.encode()).hexdigest()
     integrity2 = hashlib.sha256(string2.encode()).hexdigest()
     
