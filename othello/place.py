@@ -73,6 +73,9 @@ def _place(parms):
     if next_token_position == -1:
         return {'status': ERROR05}
     
+    
+
+    
     Directions = [[1,0],[-1,0],[0,1],[0,-1],[1,-1],[1,1],[-1,-1],[-1,1]]
     #Create dictionary to store the number of light and dark that could be placed on board
     result = {light:0, dark:0}

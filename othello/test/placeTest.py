@@ -24,6 +24,7 @@ class statusTest(unittest.TestCase):
         self.error13 = 'error: incorrect integrity'
         self.error14 = 'error: incorrect location'
         self.error15 = 'error: location out-of-bound'
+        self.error16 = 'error: location occupied'
       
     def tearDown(self):
         self.inputDictionary = {}
@@ -312,8 +313,21 @@ class statusTest(unittest.TestCase):
         correct = {'status': self.error15}
         result = place._place(self.inputDictionary)
         self.assertEqual(correct, result)  
-    
-    
+        
+    def test300_954LocationOccupied(self):
+        self.setOperation('place')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('3')
+        board='[3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,2,3,3,3,3,2,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3]'
+        self.setBoard(board)
+        self.setLocation('3:3')
+        integrity = 'f01977c17f801c43eeb13fb9f74a49bd0c761db3cdffe01510f47ddd23ab465a'        
+        self.setIntegrity(integrity)
+        correct = {'status': self.error16}
+        result = place._place(self.inputDictionary)
+        self.assertEqual(correct, result)  
+
 #     def test300_954LocationIncorrect(self):
 #         self.setOperation('place')
 #         self.setLight('1')
