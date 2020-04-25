@@ -24,6 +24,6 @@ def isValidTokens(token):
         return {'error': ERROR01}
     #If value of 'light' is not in range [0,9], return corresponding error message
     if int_token > 9 or int_token < 0:
-        return {'status': ERROR02}
+        return {'error': ERROR02}
 #     #Overwrite the value of 'light'
 #     tokens['light'] = light
