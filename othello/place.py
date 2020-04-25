@@ -19,6 +19,12 @@ def _place(parms):
         if not isinstance(r, int):
             return r
         token['dark'] = r
+        
+    if 'blank' in parms:
+        r = isValidTokens(parms['blank'])
+        if not isinstance(r, int):
+            return r
+        token['blank'] = r
 
 def isValidTokens(token):
     ERROR01 = 'error: light/blank/dark non-integer'
