@@ -312,6 +312,7 @@ class statusTest(unittest.TestCase):
         correct = {'status': self.error11}
         result = place._place(self.inputDictionary)
         self.assertEqual(correct, result)  
+    
     def test300_961IntegrityNull(self):
         self.setOperation('place')
         self.setLight('1')

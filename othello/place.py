@@ -57,6 +57,10 @@ def _place(parms):
         return location
     
     
+    ERROR04 = 'error: missing integrity'
+    if 'integrity' not in parms or parms['integrity'] == None:
+        return {'status': ERROR04}
+    
 def isValidTokens(token):
     ERROR01 = 'error: light/blank/dark non-integer'
     ERROR02 = 'error: light/blank/dark out of bounds'
@@ -116,6 +120,9 @@ def isValidLocation(input_location):
         return {'status': ERROR01}
     return location
     
+
+
+
 
 def get_index(row, column, size):
     #check if the row is column is valid, return -1 if out of bounds, return index in the board if valid.
