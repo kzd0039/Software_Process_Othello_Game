@@ -128,8 +128,10 @@ def isValidLocation(input_location):
 def isValidIntegrity(input_integrity, board, light, dark, blank,size):
     ERROR01 = 'error: invalid integrity'
     ERROR02 = 'error: incorrect integrity'
+    
     if len(input_integrity) != 64:
         return{'status': ERROR01}
+        
     string = ''.join(board[i+j*size] for i in range(size) for j in range(size))
     string1 = string + '/' + light +'/' +  dark +'/' +  blank + '/' +  light
     string2 = string + '/' + light + '/' + dark +'/' +  blank + '/' + dark 
