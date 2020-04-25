@@ -69,6 +69,8 @@ def isValidBoard(tokens, input_board):
     ERROR01 = 'error: invalid board'
     ERROR02 = 'error: non-square board'
     ERROR03 = 'error: board size out of bounds'
+    ERROR04 = 'error: odd board'
+    
     try:
         board = input_board[1:-1].split(',')
     except:
@@ -84,7 +86,9 @@ def isValidBoard(tokens, input_board):
     if size < 6 or size > 16:
         return {'status': ERROR03}
 
-
+    if size%2 != 0:
+        return {'status': ERROR04}
+  
 
 
 
