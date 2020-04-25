@@ -19,6 +19,7 @@ class statusTest(unittest.TestCase):
         self.error8 = 'error: board with non-light/dark/blank tokens'
         self.error9 = 'error: missing location'
         self.error10 = 'error: invalid location'
+        self.error11 = 'error: missing integrity'
 #         self.error8 = 'error: missing integrity'
 #         self.error9 = 'error: invalid integrity'
 
@@ -182,7 +183,7 @@ class statusTest(unittest.TestCase):
         result = place._place(self.inputDictionary)
         self.assertEqual(correct, result)   
          
-    def test300_941BoardEqualsNone(self):
+    def test300_941BoardNull(self):
         self.setOperation('place')
         self.setLight('3')
         self.setDark('2')
@@ -275,7 +276,7 @@ class statusTest(unittest.TestCase):
         result = place._place(self.inputDictionary)
         self.assertEqual(correct, result) 
 
-    def test300_951LocationEqualsNone(self):
+    def test300_951LocationNull(self):
         self.setOperation('place')
         self.setLight('3')
         self.setDark('2')
@@ -299,8 +300,39 @@ class statusTest(unittest.TestCase):
         result = place._place(self.inputDictionary)
         self.assertEqual(correct, result) 
 
-
-
+    def test300_960IntegrityMissing(self):
+        self.setOperation('place')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('3')
+        board='[3,3,3,3,3,3,\
+               3,3,3,3,3,3,\
+               3,3,1,2,3,3,\
+               3,3,2,1,3,3,\
+               3,3,3,3,3,3,\
+               3,3,3,3,3,3]'
+        self.setBoard(board)
+#         integrity = 'f01977c17f801c43eeb13fb9f74a49bd0c761db3cdffe01510f47ddd23ab465a00'
+        correct = {'status': self.error11}
+        result = place._place(self.inputDictionary)
+        self.assertEqual(correct, result)  
+    def test300_961IntegrityNull(self):
+        self.setOperation('place')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('3')
+        board='[3,3,3,3,3,3,\
+               3,3,3,3,3,3,\
+               3,3,1,2,3,3,\
+               3,3,2,1,3,3,\
+               3,3,3,3,3,3,\
+               3,3,3,3,3,3]'
+        self.setBoard(board)
+        self.setIntegrity(None)
+#         integrity = 'f01977c17f801c43eeb13fb9f74a49bd0c761db3cdffe01510f47ddd23ab465a00'
+        correct = {'status': self.error11}
+        result = place._place(self.inputDictionary)
+        self.assertEqual(correct, result)  
 
 
 
