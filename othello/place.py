@@ -52,8 +52,9 @@ def _place(parms):
     if 'location' not in parms or parms['location'] == None:
         return {'status': ERROR03}
     
-    
-    
+    location = isValidLocation(parms['location'])
+    if not isinstance(location, list):
+        return location
     
     
 def isValidTokens(token):
@@ -107,7 +108,7 @@ def isValidBoard(tokens, input_board):
     return board
   
 
-def isValidLocation(input_location, size):
+def isValidLocation(input_location):
     ERROR01 = 'error: invalid location'
     try:
         location =[int(x) for x in input_location.split(':')]
