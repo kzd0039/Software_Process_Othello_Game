@@ -15,11 +15,12 @@ def _place(parms):
 
 
 def isValidTokens(token):
-#     try:
-#         int_token = int(token)
-#     except:
-#     #If value of 'light' is not integer, return corresponding error message
-#         return {'status': ERROR01}
+    ERROR01 = 'error: light/blank/dark non-integer'
+    try:
+        int_token = int(token)
+    except:
+    #If value of 'light' is not integer, return corresponding error message
+        return {'status': ERROR01}
 #     #If value of 'light' is not in range [0,9], return corresponding error message
 #     if light > 9 or light < 0:
 #         return {'status': ERROR02}

@@ -9,8 +9,8 @@ import othello.place as place
 class statusTest(unittest.TestCase):
     def setUp(self):
         self.inputDictionary = {}
-        self.error1 = 'error: light/blank/dark out of bounds'
-        self.error2 = 'error: light/blank/dark non-integer'
+        self.error1 = 'error: light/blank/dark non-integer'
+        self.error2 = 'error: light/blank/dark out of bounds'
 #         self.error3 = 'error: light/blank/dark not unique'
 #         self.error4 = 'error: missing board'
 #         self.error5 = 'error: non-square board'
@@ -57,7 +57,7 @@ class statusTest(unittest.TestCase):
     def test300_900LightNonInteger(self):
         self.setLight('X')
         
-        correct = {'error': self.error2}
+        correct = {'error': self.error1}
         result = place._place(self.inputDictionary)
         
         self.assertEqual(result, correct)
