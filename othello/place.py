@@ -65,6 +65,15 @@ def _place(parms):
     if not isinstance(token_to_place, str):
         return token_to_place
     
+    row = location[0] - 1
+    column = location[1] - 1
+    
+    
+    Directions = [[1,0],[-1,0],[0,1],[0,-1],[1,-1],[1,1],[-1,-1],[-1,1]]
+    #Create dictionary to store the number of light and dark that could be placed on board
+    result = {light:0, dark:0}
+    
+    
 def isValidTokens(token):
     ERROR01 = 'error: light/blank/dark non-integer'
     ERROR02 = 'error: light/blank/dark out of bounds'
@@ -152,7 +161,27 @@ def get_index(row, column, size):
     else:
         return -1
 
-
+def isValidTokenToPlace(row, column, size, board, tokens, stack, direction):
+    #Move forward according to the direction
+    row += direction[0]
+    column += direction[1]
+    #if index is out of bounds, return -1 to show current path is invalid
+    i = get_index(row, column, size)
+    if i == -1:
+        return -1
+    
+    current = board[i]
+    #If current token is blank, return -1 to show current path is invalid
+    if current == tokens['blank']:
+        return -1
+    #If the current token is not the same with previous, return current token to show that this token can place on the original blank token
+    if stack and current != stack[-1]:
+        return current
+    else:
+        #If the current is the same with previous, store the current token and keep moving
+        stack.append(current)
+        return isValidTokenToPlace(row, column, size, board, tokens, stack, direction)
+   
 
 
 
