@@ -38,7 +38,7 @@ def _place(parms):
     if 'board' not in parms:
         return {'status': ERROR02}
 
-    ERROR03 = 'error: invalid board'
+
     
     
 def isValidTokens(token):
