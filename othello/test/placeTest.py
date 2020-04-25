@@ -57,7 +57,7 @@ class statusTest(unittest.TestCase):
     def test300_900LightNonInteger(self):
         self.setOperation('place')
         self.setLight('X')
-        correct = {'error': self.error1}
+        correct = {'status': self.error1}
         result = place._place(self.inputDictionary)
         
         self.assertEqual(result, correct)
@@ -65,7 +65,7 @@ class statusTest(unittest.TestCase):
     def test300_901LightNonInteger(self):
         self.setOperation('place')
         self.setLight('1.5')
-        correct = {'error': self.error1}
+        correct = {'status': self.error1}
         result = place._place(self.inputDictionary)
         
         self.assertEqual(result, correct)
@@ -73,7 +73,7 @@ class statusTest(unittest.TestCase):
     def test300_902LightOutOfUpperBound(self):
         self.setOperation('place')
         self.setLight('10')
-        correct = {'error': self.error2}
+        correct = {'status': self.error2}
         result = place._place(self.inputDictionary)
         
         self.assertEqual(result, correct) 
@@ -81,7 +81,7 @@ class statusTest(unittest.TestCase):
     def test300_903LightOutOfLowerBound(self):
         self.setOperation('place')
         self.setLight('-1')
-        correct = {'error': self.error2}
+        correct = {'status': self.error2}
         result = place._place(self.inputDictionary)
         
         self.assertEqual(result, correct) 
@@ -90,7 +90,7 @@ class statusTest(unittest.TestCase):
     def test300_910DarkNonInteger(self):
         self.setOperation('place')
         self.setDark('X')
-        correct = {'error': self.error1}
+        correct = {'status': self.error1}
         result = place._place(self.inputDictionary)
         
         self.assertEqual(result, correct)
@@ -98,7 +98,7 @@ class statusTest(unittest.TestCase):
     def test300_911DarkNonInteger(self):
         self.setOperation('place')
         self.setDark('1.5')
-        correct = {'error': self.error1}
+        correct = {'status': self.error1}
         result = place._place(self.inputDictionary)
         
         self.assertEqual(result, correct)
@@ -106,7 +106,7 @@ class statusTest(unittest.TestCase):
     def test300_912DarkOutOfUpperBound(self):
         self.setOperation('place')
         self.setDark('10')
-        correct = {'error': self.error2}
+        correct = {'status': self.error2}
         result = place._place(self.inputDictionary)
         
         self.assertEqual(result, correct) 
@@ -114,7 +114,7 @@ class statusTest(unittest.TestCase):
     def test300_913DarkOutOfLowerBound(self):
         self.setOperation('place')
         self.setDark('-1')
-        correct = {'error': self.error2}
+        correct = {'status': self.error2}
         result = place._place(self.inputDictionary)
         
         self.assertEqual(result, correct)     
@@ -122,7 +122,7 @@ class statusTest(unittest.TestCase):
     def test300_920BlankNonInteger(self):
         self.setOperation('place')
         self.setBlank('X')
-        correct = {'error': self.error1}
+        correct = {'status': self.error1}
         result = place._place(self.inputDictionary)
         
         self.assertEqual(result, correct)
@@ -130,7 +130,7 @@ class statusTest(unittest.TestCase):
     def test300_921BlankNonInteger(self):
         self.setOperation('place')
         self.setBlank('1.5')
-        correct = {'error': self.error1}
+        correct = {'status': self.error1}
         result = place._place(self.inputDictionary)
         
         self.assertEqual(result, correct)
@@ -138,7 +138,7 @@ class statusTest(unittest.TestCase):
     def test300_922BlankOutOfUpperBound(self):
         self.setOperation('place')
         self.setBlank('10')
-        correct = {'error': self.error2}
+        correct = {'status': self.error2}
         result = place._place(self.inputDictionary)
         
         self.assertEqual(result, correct) 
@@ -146,13 +146,13 @@ class statusTest(unittest.TestCase):
     def test300_923BlankOutOfLowerBound(self):
         self.setOperation('place')
         self.setBlank('-1')
-        correct = {'error': self.error2}
+        correct = {'status': self.error2}
         result = place._place(self.inputDictionary)
         
         self.assertEqual(result, correct)       
         
     def test300_930BoardMissing(self):
-        self.setOperation('status')
+        self.setOperation('place')
         self.setLight('1')
         self.setDark('2')
         self.setBlank('3')

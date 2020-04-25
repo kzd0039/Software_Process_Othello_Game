@@ -26,7 +26,7 @@ def _place(parms):
             return r
         token['blank'] = r
 
-
+        
 
     
     
@@ -38,9 +38,9 @@ def isValidTokens(token):
         int_token = int(token)
     except:
     #If value of 'light' is not integer, return corresponding error message
-        return {'error': ERROR01}
+        return {'status': ERROR01}
     #If value of 'light' is not in range [0,9], return corresponding error message
     if int_token > 9 or int_token < 0:
-        return {'error': ERROR02}
+        return {'status': ERROR02}
     
     return int_token
