@@ -15,7 +15,7 @@ class statusTest(unittest.TestCase):
         self.error4 = 'error: missing board'
         self.error5 = 'error: non-square board'
         self.error6 = 'error: board size out of bounds'
-#         self.error6 = 'error: odd board'
+        self.error7 = 'error: odd board'
 #         self.error7 = 'error: board with non-light/dark/blank tokens'
 #         self.error8 = 'error: missing integrity'
 #         self.error9 = 'error: invalid integrity'
@@ -225,6 +225,24 @@ class statusTest(unittest.TestCase):
         result = place._place(self.inputDictionary)
         self.assertEqual(correct, result)   
 
+    def test300_944BoardSizeOdd(self):
+        self.setOperation('place')
+        self.setLight('3')
+        self.setDark('2')
+        self.setBlank('1')
+        board = '[1,1,1,1,1,1,1,\
+                 1,1,1,1,1,1,1,\
+                 1,1,1,1,1,1,1,\
+                 1,1,1,1,1,1,1,\
+                 1,1,1,1,1,1,1,\
+                 1,1,1,1,1,1,1,\
+                 1,1,1,1,1,1,1]'
+           
+        self.setBoard(board)
+      
+        correct = {'status': self.error7}
+        result = place._place(self.inputDictionary)
+        self.assertEqual(correct, result)   
 
 
 
