@@ -39,9 +39,10 @@ def _place(parms):
     ERROR02 = 'error: missing board'
     if 'board' not in parms or parms['board'] == None:
         return {'status': ERROR02}
-
-
     
+    board = isValidBoard(tokens, parms['board'])
+    if not isinstance(board, list):
+        return board
     
 def isValidTokens(token):
     ERROR01 = 'error: light/blank/dark non-integer'
