@@ -25,11 +25,18 @@ def _place(parms):
         if not isinstance(r, int):
             return r
         tokens['blank'] = r
-
     
-    ERROR01 = 'error: missing board'
-    if 'board' not in parms:
+    light = tokens['light']
+    dark = tokens['dark']
+    blank = tokens['blank'] 
+    
+    ERROR01 = 'error: light/blank/dark not unique'
+    if light == dark or dark == blank or dark == blank:
         return {'status': ERROR01}
+    
+    ERROR02 = 'error: missing board'
+    if 'board' not in parms:
+        return {'status': ERROR02}
 
     ERROR02 = 'error: invalid board'
     
