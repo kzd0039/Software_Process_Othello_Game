@@ -68,7 +68,7 @@ def isValidTokens(token):
 def isValidBoard(tokens, input_board):
     ERROR01 = 'error: invalid board'
     ERROR02 = 'error: non-square board'
-    
+    ERROR03 = 'error: board size out of bounds'
     try:
         board = input_board[1:-1].split(',')
     except:
@@ -81,7 +81,8 @@ def isValidBoard(tokens, input_board):
     if size**2 != len_board:   
         return {'status': ERROR02}
     
-
+    if size < 6 or size > 16:
+        return {'status': ERROR03}
 
 
 
