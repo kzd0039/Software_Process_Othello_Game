@@ -78,7 +78,12 @@ def _status(parms):
     #If 'board' is missing or the value of it is None, return corresponding error message
     if 'board' not in parms or parms['board'] == None:
         return {'status': ERROR04}
-    board = parms['board']
+    input_board = parms['board']
+    try:
+        board =[int(x) for x in input_board[1:-1].split(',')]
+    except:
+        return {'status': ERROR07}
+    
     len_board = len(board)
     #Get square root of the length of board and convert it to integer
     size = int(math.sqrt(len_board))

@@ -116,3 +116,27 @@ board=[1,1,1,1,1,1,1,1,
        1,1,1,1,1,1,1,0,
        1,1,1,1,1,1,1,1]
 
+b = str(board)
+print(b)
+print(type(b))
+print(len(b))
+print(b[0],b[1],b[2],b[3],b[4])
+
+
+
+
+
+input_board='[1,1,1,1]'
+new_board = input_board[1:-1].split(',')
+print(new_board)
+print(type(new_board))
+
+
+
+
+
+
+
+
+
+
