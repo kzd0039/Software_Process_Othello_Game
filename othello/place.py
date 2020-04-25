@@ -73,8 +73,9 @@ def _place(parms):
     if next_token_position == -1:
         return {'status': ERROR05}
     
-    
-
+    ERROR06 = 'error: location occupied'
+    if board[next_token_position] != blank:
+        return {'status': ERROR06}
     
     Directions = [[1,0],[-1,0],[0,1],[0,-1],[1,-1],[1,1],[-1,-1],[-1,1]]
     #Create dictionary to store the number of light and dark that could be placed on board
