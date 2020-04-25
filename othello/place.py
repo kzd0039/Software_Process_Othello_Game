@@ -36,6 +36,10 @@ def _place(parms):
     if light == dark or dark == blank or light == blank:
         return {'status': ERROR01}
     
+    
+    
+    
+    
     ERROR02 = 'error: missing board'
     if 'board' not in parms or parms['board'] == None:
         return {'status': ERROR02}
@@ -43,6 +47,8 @@ def _place(parms):
     board = isValidBoard(tokens, parms['board'])
     if not isinstance(board, list):
         return board
+    
+    
     
 def isValidTokens(token):
     ERROR01 = 'error: light/blank/dark non-integer'
@@ -60,20 +66,20 @@ def isValidTokens(token):
 
 
 def isValidBoard(tokens, input_board):
-    ERROR01 = 'error: non-square board'
-    
+    ERROR01 = 'error: invalid board'
+    ERROR02 = 'error: non-square board'
     
     try:
         board = input_board[1:-1].split(',')
     except:
-        pass
+        return {'status': ERROR01}
     
     len_board = len(board)
     #Get square root of the length of board and convert it to integer
     size = int(math.sqrt(len_board))
     #If board is non-square, return corresponding error message
     if size**2 != len_board:   
-        return {'status': ERROR01}
+        return {'status': ERROR02}
     
 
 
