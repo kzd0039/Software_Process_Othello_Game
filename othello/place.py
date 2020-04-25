@@ -46,6 +46,10 @@ def _place(parms):
         return board
     
     
+    ERROR03 = 'error: missing location'
+    if 'location' not in parms or parms['location'] == None:
+        return {'status': ERROR03}
+    
     
 def isValidTokens(token):
     ERROR01 = 'error: light/blank/dark non-integer'
