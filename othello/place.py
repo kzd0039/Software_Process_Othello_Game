@@ -143,13 +143,13 @@ def _place(parms):
         next_token = opposite
         output_integrity = integrityCalculation(board, light, dark, blank, next_token, size)
         result['integrity'] = output_integrity
-        
+        return result
     if next_tokens[light]>0:
         result['status'] = 'ok'
         next_token = light
         output_integrity = integrityCalculation(board, light, dark, blank, next_token, size)
         result['integrity'] = output_integrity
-    
+        return result
     #If only  light is greater than 0, next_token can only be light
 #     if result[light] > 0:
 #         return {'status': 'light'}
@@ -162,7 +162,7 @@ def _place(parms):
     
     
     
-    return result
+    
         
         
         
