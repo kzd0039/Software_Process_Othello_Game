@@ -117,7 +117,7 @@ def _place(parms):
             c_row += direction[0]
             c_column += direction[1]
         
-    result['board'] = '[' + ''.join(board) +']'
+    result['board'] = '[' + ','.join(board) +']'
     
     return result
         
