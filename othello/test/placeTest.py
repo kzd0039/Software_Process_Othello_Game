@@ -67,7 +67,8 @@ class statusTest(unittest.TestCase):
         result = place._place(self.inputDictionary)
         
         correct = {}
-        correct['board']= '[0,0,0,0,0,0,0,0,2,0,0,0,0,0,2,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]'
+        correct['board'] = '[0,0,0,0,0,0,0,0,2,0,0,0,0,0,2,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]'
+        correct['status'] = 'ok'
         self.assertEqual(correct, result)
        
         
