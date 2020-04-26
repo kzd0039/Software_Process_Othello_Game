@@ -53,7 +53,11 @@ class statusTest(unittest.TestCase):
     def setExtra(self, extra):
         self.inputDictionary['extra'] = extra
         
+       
+        
     #board_status
+    
+
     def test300_001(self):
         self.setOperation('place')
         self.setLight('1')
@@ -107,6 +111,26 @@ class statusTest(unittest.TestCase):
         correct['integrity'] = 'e23da4f11138de543a420a3cfebd967bbf4fea360ceab05af39d9f9c63dd7506'
         correct['status'] = 'ok'
         self.assertEqual(correct, result)
+        
+        
+    def test300_031(self):
+        self.setOperation('place')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('0')
+        self.setLocation('1:1')
+        board = '[0,1,1,1,1,0,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0]'
+        self.setBoard(board)
+        integrity = 'da3f7ca4a27610283a942fa00eb8e660ee758e4dbb97dde8b483c7725e25f1be'
+        self.setIntegrity(integrity)
+        result = place._place(self.inputDictionary)
+        
+        correct = {}
+        correct['board'] = '[2,1,1,1,1,0,1,2,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0]'
+        correct['integrity'] = '8dd31c35e2ed54cdb355adee198d93daac5836fc702838b7c2a8aebe1d9d59c9'
+        correct['status'] = 'ok'
+        self.assertEqual(correct, result)
+        
         
     def test300_900LightNonInteger(self):
         self.setOperation('place')
