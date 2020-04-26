@@ -71,10 +71,10 @@ def _place(parms):
         opposite = str(tokens['light'])
     
     
-    row = location[0] - 1
-    column = location[1] - 1
+    current_row = location[0] - 1
+    current_column = location[1] - 1
     ERROR05 = 'error: location out-of-bound'
-    next_token_position = get_index(row, column, size)
+    next_token_position = get_index(current_row, current_column, size)
     if next_token_position == -1:
         return {'status': ERROR05}
     
@@ -87,8 +87,8 @@ def _place(parms):
     pair_position = [ ]
     
     for direction in Directions:
-        row += direction[0]
-        column += direction[1]
+        row = current_row + direction[0]
+        column = current_column + direction[1]
         current_index = get_index(row, column, size)
         current_token = board[current_index]
         while current_index != -1 and current_token == opposite:
@@ -104,8 +104,29 @@ def _place(parms):
     if not pair_position:
         return {'status': ERROR07} 
     
+    result = { }
     
-    result = {light:0, dark:0}
+    for x in pair_position:
+        destination_row = x[0]
+        destination_column = x[1]
+        direction = x[2]
+        c_row = current_row
+        c_column = current_column
+        while not(c_row == destination_row and c_column == destination_column):
+            board[get_index(c_row, c_column,size)] = token_to_place
+            c_row += direction[0]
+            c_column += direction[1]
+        
+    result['board'] = '[' + ''.join(board) +']'
+    
+    return result
+        
+        
+        
+        
+        
+    
+    
     
 def isValidTokens(token):
     ERROR01 = 'error: light/blank/dark non-integer'
