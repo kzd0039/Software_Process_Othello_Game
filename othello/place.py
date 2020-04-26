@@ -134,7 +134,7 @@ def _place(parms):
                     stack = [ ]
                     #If is_valid() return the token that is dark or light, update the number in result.
                     key = is_valid(i,j,size,board,tokens,stack,direction)
-                    if key in result:
+                    if key in next_tokens:
                         next_tokens[key] += 1
     
     #if both value are greater than 0, next_token can be light or dark
