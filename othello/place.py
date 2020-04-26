@@ -164,7 +164,7 @@ def _place(parms):
     result['integrity'] = output_integrity
     count_board = collections.Counter(board)
     result['status'] = 'end:' + str(count_board[light]) + '/' + str(count_board[dark])
-    
+    return result
     
         
         
