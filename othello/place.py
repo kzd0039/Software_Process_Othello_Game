@@ -159,7 +159,11 @@ def _place(parms):
         result['integrity'] = output_integrity
         return result
     
-    
+    next_token = dark
+    output_integrity = integrityCalculation(board, light, dark, blank, next_token, size)
+    result['integrity'] = output_integrity
+    count_board = collections.Counter(board)
+    result['status'] = 'end:' + str(count_board(light)) + '/' + str(count_board(dark))
     
     
         
