@@ -144,27 +144,24 @@ def _place(parms):
         output_integrity = integrityCalculation(board, light, dark, blank, next_token, size)
         result['integrity'] = output_integrity
         return result
-    if next_tokens[light]>0:
+    
+    if next_tokens[light] > 0:
         result['status'] = 'ok'
         next_token = light
         output_integrity = integrityCalculation(board, light, dark, blank, next_token, size)
         result['integrity'] = output_integrity
         return result
-    #If only  light is greater than 0, next_token can only be light
-#     if result[light] > 0:
-#         return {'status': 'light'}
-#     #If only  dark is greater than 0, next_token can only be dark
-#     if result[dark] > 0:
-#         return {'status': 'dark'}
-#     #If neither the dark and light could be placed, the game is end
-#     return {'status': 'end'}
+    
+    if next_tokens[dark] > 0:
+        result['status'] = 'ok'
+        next_token = dark
+        output_integrity = integrityCalculation(board, light, dark, blank, next_token, size)
+        result['integrity'] = output_integrity
+        return result
     
     
     
     
-    
-        
-        
         
         
     
