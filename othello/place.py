@@ -83,7 +83,7 @@ def _place(parms):
         return {'status': ERROR06}
     
     Directions = [[1,0],[-1,0],[0,1],[0,-1],[1,-1],[1,1],[-1,-1],[-1,1]]
-    #Create dictionary to store the number of light and dark that could be placed on board
+
     pair_position = [ ]
     
     for direction in Directions:
@@ -237,11 +237,8 @@ def isValidIntegrity(input_integrity, board, light, dark, blank,size):
     if len(input_integrity) != 64:
         return{'status': ERROR01}
         
-    string = ''.join(board[i+j*size] for i in range(size) for j in range(size))
-    string1 = string + '/' + light +'/' +  dark +'/' +  blank + '/' +  light
-    string2 = string + '/' + light + '/' + dark +'/' +  blank + '/' + dark 
-    integrity1 = hashlib.sha256(string1.encode()).hexdigest()
-    integrity2 = hashlib.sha256(string2.encode()).hexdigest()
+    integrity1 = integrityCalculation(board, light, dark, blank, light, size)
+    integrity2 = integrityCalculation(board, light, dark, blank, dark, size)
     
     if input_integrity == integrity1:
         return 'light'
