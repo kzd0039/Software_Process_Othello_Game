@@ -161,7 +161,7 @@ class statusTest(unittest.TestCase):
         result = place._place(self.inputDictionary)
         
         correct = {}
-        correct['board'] = '1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2]'
+        correct['board'] = '[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2]'
         correct['integrity'] = '1bcb08a73744b1bd078948fe7c29d249d49034ca92dce421d06d73cdcdeb936a'
         correct['status'] = 'end:5/59'
         self.assertEqual(correct, result)    
