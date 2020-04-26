@@ -98,7 +98,7 @@ def _place(parms):
             current_token = board[current_index]
             
         if current_index != -1 and current_token == token_to_place:
-            pair_position.append([row, column])
+            pair_position.append([row, column, direction])
     
     ERROR07 = 'error: incorrect location'
     if not pair_position:
