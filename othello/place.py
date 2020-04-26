@@ -140,6 +140,9 @@ def _place(parms):
     #if both value are greater than 0, next_token can be light or dark
     if next_tokens[light] > 0 and next_tokens[dark] > 0:
         result['status'] = 'ok'
+        next_token = opposite
+        output_integrity = integrityCalculation(board, light, dark, blank, next_token, size)
+        result['integrity'] = output_integrity
     
     
     
@@ -220,6 +223,12 @@ def isValidLocation(input_location):
         return {'status': ERROR01}
     return location
     
+
+def integrityCalculation(board, light, dark, blank, next_token, size):
+    string = ''.join(board[i+j*size] for i in range(size) for j in range(size)) \
+            + '/' + light +'/' +  dark +'/' +  blank + '/' +  next_token
+    return hashlib.sha256(string.encode()).hexdigest()
+
 
 def isValidIntegrity(input_integrity, board, light, dark, blank,size):
     ERROR01 = 'error: invalid integrity'
