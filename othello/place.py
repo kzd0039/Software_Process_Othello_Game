@@ -138,7 +138,7 @@ def _place(parms):
                         next_tokens[key] += 1
     
     #if both value are greater than 0, next_token can be light or dark
-    if next_tokens['light'] > 0 and next_tokens['dark'] > 0:
+    if next_tokens[light] > 0 and next_tokens[dark] > 0:
         result['status'] = 'ok'
     
     
