@@ -86,6 +86,8 @@ class statusTest(unittest.TestCase):
         
         correct = {}
         correct['board'] = '[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]'
+        correct['integrity'] = 'f717bc92d80a8d2e16c96bcefc4d71246b7af9c4a7f671d5290e28fde4029bfd'
+        correct['status'] = 'ok'
         self.assertEqual(correct, result)
         
         
