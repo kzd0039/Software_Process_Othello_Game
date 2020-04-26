@@ -119,14 +119,47 @@ def _place(parms):
         
     result['board'] = '[' + ','.join(board) +']'
     
+    
+    next_tokens = {'light':0,'dark':0}
+    
+    for i in range(size):
+        for j in range(size):
+            #Get the current index based on the row, column and size of the board.
+            index = get_index(i,j,size)
+            #If the token is blank, means it is possible to place a light or dark.
+            if board[index] == blank:
+                #From this token, check eight directions one by one.
+                for direction in Directions:
+                    #Create list to keep track of tokens as it moves.
+                    stack = [ ]
+                    #If is_valid() return the token that is dark or light, update the number in result.
+                    key = is_valid(i,j,size,board,tokens,stack,direction)
+                    if key in result:
+                        next_tokens[key] += 1
+    
+    #if both value are greater than 0, next_token can be light or dark
+    if next_tokens[light] > 0 and next_tokens[dark] > 0:
+        result['status'] = 'ok'
+    
+    
+    
+    #If only  light is greater than 0, next_token can only be light
+#     if result[light] > 0:
+#         return {'status': 'light'}
+#     #If only  dark is greater than 0, next_token can only be dark
+#     if result[dark] > 0:
+#         return {'status': 'dark'}
+#     #If neither the dark and light could be placed, the game is end
+#     return {'status': 'end'}
+    
+    
+    
+    
     return result
         
         
         
         
-        
-    
-    
     
 def isValidTokens(token):
     ERROR01 = 'error: light/blank/dark non-integer'
@@ -214,8 +247,6 @@ def get_index(row, column, size):
         return row*size + column
     else:
         return -1
-
-
 
 
 def is_valid(row, column, size, board, tokens, stack, direction):
