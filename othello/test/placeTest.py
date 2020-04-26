@@ -90,7 +90,23 @@ class statusTest(unittest.TestCase):
         correct['status'] = 'ok'
         self.assertEqual(correct, result)
         
+    def test300_021(self):   
+        self.setOperation('place')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('0')
+        self.setLocation('1:1')
+        board = '[0,2,2,2,2,0,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]'
+        self.setBoard(board)
+        integrity = 'f8db8a2cdc2f269122824f67025b35b405b6f271904a8433759b5035524decc3'
+        self.setIntegrity(integrity)
+        result = place._place(self.inputDictionary)
         
+        correct = {}
+        correct['board'] = '[1,2,2,2,2,0,2,1,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]'
+        correct['integrity'] = 'e23da4f11138de543a420a3cfebd967bbf4fea360ceab05af39d9f9c63dd7506'
+        correct['status'] = 'ok'
+        self.assertEqual(correct, result)
         
     def test300_900LightNonInteger(self):
         self.setOperation('place')
