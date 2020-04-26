@@ -148,6 +148,25 @@ class statusTest(unittest.TestCase):
         correct['status'] = 'end:59/5'
         self.assertEqual(correct, result)
         
+    def test300_051(self):
+        self.setOperation('place')
+        self.setLight('2')
+        self.setDark('1')
+        self.setBlank('0')
+        self.setLocation('8:8')
+        board = '[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0]'
+        self.setBoard(board)
+        integrity = 'd3c64bc0b9471cf272072140ee7f4a26ca31aed3feb789308c173b831913c495'
+        self.setIntegrity(integrity)
+        result = place._place(self.inputDictionary)
+        
+        correct = {}
+        correct['board'] = '1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2]'
+        correct['integrity'] = '1bcb08a73744b1bd078948fe7c29d249d49034ca92dce421d06d73cdcdeb936a'
+        correct['status'] = 'end:5/59'
+        self.assertEqual(correct, result)    
+    
+        
         
     def test300_900LightNonInteger(self):
         self.setOperation('place')
