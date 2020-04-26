@@ -120,7 +120,7 @@ def _place(parms):
     result['board'] = '[' + ','.join(board) +']'
     
     
-    next_tokens = {'light':0,'dark':0}
+    next_tokens = {light:0,dark:0}
     
     for i in range(size):
         for j in range(size):
@@ -260,7 +260,7 @@ def is_valid(row, column, size, board, tokens, stack, direction):
     
     current = board[i]
     #If current token is blank, return -1 to show current path is invalid
-    if current == tokens['blank']:
+    if current == str(tokens['blank']):
         return -1
     #If the current token is not the same with previous, return current token to show that this token can place on the original blank token
     if stack and current != stack[-1]:
