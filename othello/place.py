@@ -44,7 +44,6 @@ def _place(parms):
     light = str(tokens['light'])
     dark = str(tokens['dark'])
     blank = str(tokens['blank'])
-    
     #check if value of light, dark and blank is unique
     if light == dark or dark == blank or light == blank:
         return {'status': ERROR01}
@@ -259,9 +258,9 @@ def isValidIntegrity(input_integrity, board, light, dark, blank,size):
     integrity2 = integrityCalculation(board, light, dark, blank, dark, size)
     
     if input_integrity == integrity1:
-        return ['light','dark']
+        return [light,dark]
     if input_integrity == integrity2:
-        return ['dark','light']
+        return [dark,light]
     return {'status': ERROR02}
 
 
