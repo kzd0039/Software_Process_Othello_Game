@@ -122,23 +122,21 @@ class statusTest(unittest.TestCase):
                    'status': 'ok'}
         self.assertEqual(correct, result)
         
-#     def test300_011(self):  
-#         self.setOperation('place')
-#         self.setLight('1')
-#         self.setDark('2')
-#         self.setBlank('0')
-#         self.setLocation('3:5')
-#         board = '[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]'
-#         self.setBoard(board)
-#         integrity = 'c9fd7c0049f79f33e45998064cd1fca01600dd5cdc55cb3bf33169cd07c1905a'
-#         self.setIntegrity(integrity)
-#         result = place._place(self.inputDictionary)
-#          
-#         correct = {}
-#         correct['board'] = '[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]'
-#         correct['integrity'] = 'f717bc92d80a8d2e16c96bcefc4d71246b7af9c4a7f671d5290e28fde4029bfd'
-#         correct['status'] = 'ok'
-#         self.assertEqual(correct, result)
+    def test300_011(self):  
+        self.setOperation('place')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('0')
+        self.setLocation('3:5')
+        board = '[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]'
+        self.setBoard(board)
+        integrity = 'c9fd7c0049f79f33e45998064cd1fca01600dd5cdc55cb3bf33169cd07c1905a'
+        self.setIntegrity(integrity)
+        result = place._place(self.inputDictionary)
+        correct = {'board': '[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]', 
+                   'integrity': 'f717bc92d80a8d2e16c96bcefc4d71246b7af9c4a7f671d5290e28fde4029bfd', 
+                   'status': 'ok'}
+        self.assertEqual(correct, result)
         
 #     def test300_021(self):   
 #         self.setOperation('place')
