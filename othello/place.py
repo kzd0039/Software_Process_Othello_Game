@@ -11,6 +11,7 @@ import math
 import collections
 import hashlib
 
+
 def _place(parms):
     ERROR01 = 'error: light/blank/dark not unique'
     ERROR02 = 'error: missing board'
