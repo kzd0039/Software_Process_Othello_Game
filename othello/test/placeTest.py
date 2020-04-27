@@ -308,8 +308,7 @@ class statusTest(unittest.TestCase):
                    'status': 'end:5/59'}
         self.assertEqual(correct, result)
         
-        
-        
+         
         #sad path  
     def test300_900LightNonInteger(self):
         self.setOperation('place')
@@ -336,7 +335,7 @@ class statusTest(unittest.TestCase):
         self.setBoard(board)
         integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
         self.setIntegrity(integrity)
-        result = place._place(self.inputDictionary)       
+       
         correct = {'status': self.error1}
         result = place._place(self.inputDictionary)
         self.assertEqual(result, correct)
@@ -352,7 +351,7 @@ class statusTest(unittest.TestCase):
         self.setBoard(board)
         integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
         self.setIntegrity(integrity)
-        result = place._place(self.inputDictionary)       
+      
         correct = {'status': self.error2}
         result = place._place(self.inputDictionary)
         self.assertEqual(result, correct)
@@ -366,20 +365,39 @@ class statusTest(unittest.TestCase):
         board = '[0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,2,0,0,0,0,2,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]'
         self.setBoard(board)
         integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
-        self.setIntegrity(integrity)
-        result = place._place(self.inputDictionary)       
+        self.setIntegrity(integrity)      
         correct = {'status': self.error2}
         result = place._place(self.inputDictionary)
         self.assertEqual(result, correct)
+        
+    def test300_904LightNull(self):
+        self.setOperation('place')
+        self.setLight('')
+        self.setDark('2')
+        self.setBlank('0')
+        self.setLocation('2:3')
+        board = '[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]'
+        self.setBoard(board)
+        integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
+        self.setIntegrity(integrity)
+        correct = {'status': self.error1}
+        result = place._place(self.inputDictionary)
+        self.assertEqual(result, correct)
+          
+    def test300_910DarkNonInteger(self):
+        self.setOperation('place')
+        self.setLight('1')
+        self.setDark('X')
+        self.setBlank('0')
+        self.setLocation('2:3')
+        board = '[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,X,0,0,0,0,X,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]'
+        self.setBoard(board)
+        integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
+        self.setIntegrity(integrity)      
+        correct = {'status': self.error1}
+        result = place._place(self.inputDictionary)
+        self.assertEqual(result, correct)
 
-#          
-#     def test300_910DarkNonInteger(self):
-#         self.setOperation('place')
-#         self.setDark('X')
-#         correct = {'status': self.error1}
-#         result = place._place(self.inputDictionary)
-#          
-#         self.assertEqual(result, correct)
          
 #     def test300_911DarkNonInteger(self):
 #         self.setOperation('place')
