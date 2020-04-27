@@ -575,17 +575,19 @@ class statusTest(unittest.TestCase):
         result = place._place(self.inputDictionary)       
         correct = {'status': self.error4}
         self.assertEqual(result, correct)
-#           
-#     def test300_941BoardNull(self):
-#         self.setOperation('place')
-#         self.setLight('3')
-#         self.setDark('2')
-#         self.setBlank('1')
-#         self.setBoard(None)
-#        
-#         correct = {'status': self.error4}
-#         result = place._place(self.inputDictionary)
-#         self.assertEqual(correct, result)   
+           
+    def test300_941BoardNull(self):
+        self.setOperation('place')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('0')
+        self.setLocation('2:3')
+        integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
+        self.setBoard('')
+        self.setIntegrity(integrity)
+        result = place._place(self.inputDictionary)       
+        correct = {'status': self.error4}
+        self.assertEqual(result, correct)
 #  
 #     def test300_942BoardNonSquare(self):
 #         self.setOperation('place')
