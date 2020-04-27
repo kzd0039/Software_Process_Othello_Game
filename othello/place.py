@@ -1,6 +1,9 @@
 '''
     Created to place token on board
     Baselined: April 25, 2020
+    Modified: April 26, 2020
+    Modified: April 27, 2020
+    @Author: Kun Ding
 '''
 
 
