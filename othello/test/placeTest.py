@@ -617,7 +617,7 @@ class statusTest(unittest.TestCase):
                  1,1,1,1,1,\
                  1,1,3,2,1,\
                  1,1,2,3,1,\
-                 1,1,1,1,1,]'
+                 1,1,1,1,1]'
              
         self.setBoard(board)
         self.setLocation('2:3')
@@ -626,25 +626,27 @@ class statusTest(unittest.TestCase):
         correct = {'status': self.error6}
         result = place._place(self.inputDictionary)
         self.assertEqual(correct, result)   
-#  
-#     def test300_944BoardSizeOdd(self):
-#         self.setOperation('place')
-#         self.setLight('3')
-#         self.setDark('2')
-#         self.setBlank('1')
-#         board = '[1,1,1,1,1,1,1,\
-#                  1,1,1,1,1,1,1,\
-#                  1,1,1,1,1,1,1,\
-#                  1,1,1,1,1,1,1,\
-#                  1,1,1,1,1,1,1,\
-#                  1,1,1,1,1,1,1,\
-#                  1,1,1,1,1,1,1]'
-#             
-#         self.setBoard(board)
-#        
-#         correct = {'status': self.error7}
-#         result = place._place(self.inputDictionary)
-#         self.assertEqual(correct, result)   
+  
+    def test300_944BoardSizeOdd(self):
+        self.setOperation('place')
+        self.setLight('3')
+        self.setDark('2')
+        self.setBlank('1')
+        board = '[1,1,1,1,1,1,1,\
+                 1,1,1,1,1,1,1,\
+                 1,1,1,1,1,1,1,\
+                 1,1,1,1,1,1,1,\
+                 1,1,1,1,1,1,1,\
+                 1,1,1,1,1,1,1,\
+                 1,1,1,1,1,1,1]'
+             
+        self.setBoard(board)
+        self.setLocation('2:3')
+        integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
+        self.setIntegrity(integrity)
+        correct = {'status': self.error7}
+        result = place._place(self.inputDictionary)
+        self.assertEqual(correct, result)   
 #  
 #     def test300_945BoardWithNonLightDarkBlankTokens(self):
 #         self.setOperation('place')
