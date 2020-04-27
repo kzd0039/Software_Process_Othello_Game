@@ -487,8 +487,20 @@ class statusTest(unittest.TestCase):
         correct = {'status': self.error1}
         result = place._place(self.inputDictionary) 
         self.assertEqual(result, correct)
-#          
-#     def test300_922BlankOutOfUpperBound(self):
+          
+    def test300_922BlankOutOfUpperBound(self):
+        self.setOperation('place')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('10')
+        self.setLocation('2:3')
+        board = '[10,10,10,10,10,10,10,10,10,10,10,10,10,10,1,2,10,10,10,10,2,1,10,10,10,10,10,10,10,10,10,10,10,10,10,10]'
+        self.setBoard(board)
+        integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
+        self.setIntegrity(integrity)      
+        correct = {'status': self.error2}
+        result = place._place(self.inputDictionary)
+        self.assertEqual(result, correct)
 #         self.setOperation('place')
 #         self.setBlank('10')
 #         correct = {'status': self.error2}
