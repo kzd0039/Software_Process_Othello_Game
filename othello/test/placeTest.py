@@ -96,7 +96,7 @@ class statusTest(unittest.TestCase):
         self.setDark('2')
         self.setBlank('0')
         self.setLocation('2:3')
-        board = '[0,0,0,0,0,0,0,0,2,9,0,0, 0,0,9,9,0,0,0,9,2,9,0,0,0,2,0,0,0,0,0,0,0,0,0,0]'
+        board = '[0,0,0,0,0,0,0,0,2,9,0,0,0,0,9,9,0,0,0,9,2,9,0,0,0,2,0,0,0,0,0,0,0,0,0,0]'
         self.setBoard(board)
         integrity = '4e0d3cd221a2623ae1876d772856e3c57e5da3905717e91eb29229f0bfc52af2'
         self.setIntegrity(integrity)
