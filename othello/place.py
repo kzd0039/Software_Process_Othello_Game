@@ -45,8 +45,6 @@ def _place(parms):
     dark = str(tokens['dark'])
     blank = str(tokens['blank'])
     #check if value of light, dark and blank is unique
-    if light == dark or dark == blank or light == blank:
-        return {'status': ERROR01}
     
     
     #if board is not in parms or its value is null, return error message
@@ -68,6 +66,8 @@ def _place(parms):
     if not isinstance(location, list):
         return location
     
+    if light == dark or dark == blank or light == blank:
+        return {'status': ERROR01}
     
     #if integrity is not in parms or its value is null, return error message
     if 'integrity' not in parms or parms['integrity'] == None:
