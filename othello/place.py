@@ -50,7 +50,7 @@ def _place(parms):
     
     
     #if board is not in parms or its value is null, return error message
-    if 'board' not in parms or parms['board'] == None:
+    if ('board' not in parms) or parms['board'] == None:
         return {'status': ERROR02}
     #if board is in parms, check if its value is valid
     board = isValidBoard(tokens, parms['board'])
@@ -61,7 +61,7 @@ def _place(parms):
     size = int(math.sqrt(len(board)))
     
     #if location is not in parms or its value is null, return error message
-    if 'location' not in parms or parms['location'] == None:
+    if ('location' not in parms) or parms['location'] == None:
         return {'status': ERROR03}
     #if location is in parms, check if its value is valid
     location = isValidLocation(parms['location'])

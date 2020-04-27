@@ -583,7 +583,7 @@ class statusTest(unittest.TestCase):
         self.setBlank('0')
         self.setLocation('2:3')
         integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
-        self.setBoard('')
+        self.setBoard('') 
         self.setIntegrity(integrity)
         result = place._place(self.inputDictionary)       
         correct = {'status': self.error4}
