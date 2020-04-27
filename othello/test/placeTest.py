@@ -532,7 +532,19 @@ class statusTest(unittest.TestCase):
         self.assertEqual(result, correct)
         
       
-#     def test300_930LightEqualsBlank(self):
+    def test300_930LightEqualsBlank(self):
+        self.setOperation('place')
+        self.setLight('0')
+        self.setDark('2')
+        self.setBlank('0')
+        self.setLocation('2:3')
+        board = '[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]'
+        self.setBoard(board)
+        integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
+        self.setIntegrity(integrity)
+        result = place._place(self.inputDictionary)       
+        correct = {'status': self.error3}
+        self.assertEqual(result, correct)
 #         self.setOperation('place')
 #         self.setLight('1')
 #         self.setDark('2')
