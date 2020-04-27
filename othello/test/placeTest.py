@@ -308,6 +308,8 @@ class statusTest(unittest.TestCase):
                    'status': 'end:5/59'}
         self.assertEqual(correct, result)
         
+        
+        
         #sad path  
     def test300_900LightNonInteger(self):
         self.setOperation('place')
@@ -321,7 +323,6 @@ class statusTest(unittest.TestCase):
         self.setIntegrity(integrity)
         result = place._place(self.inputDictionary)       
         correct = {'status': self.error1}
-        result = place._place(self.inputDictionary)
         self.assertEqual(result, correct)
         
          
