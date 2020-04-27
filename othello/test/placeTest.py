@@ -84,13 +84,27 @@ class statusTest(unittest.TestCase):
         integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
         self.setIntegrity(integrity)
         result = place._place(self.inputDictionary)       
-        correct = {'board': '[0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,2,1,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0]', 
+        correct = {'board': '[0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]', 
                    'integrity': 'a77317b8b0f45b47570631cfaec637f8be98fb0b2efcc2a50e05edaf7aa12332', 
                    'status': 'ok'}
         self.assertEqual(correct, result)
         
         
-        
+    def test300_003(self):  
+        self.setOperation('place')
+        self.setLight('9')
+        self.setDark('2')
+        self.setBlank('0')
+        self.setLocation('2:3')
+        board = '[0,0,0,0,0,0,0,0,2,9,0,0, 0,0,9,9,0,0,0,9,2,9,0,0,0,2,0,0,0,0,0,0,0,0,0,0]'
+        self.setBoard(board)
+        integrity = '4e0d3cd221a2623ae1876d772856e3c57e5da3905717e91eb29229f0bfc52af2'
+        self.setIntegrity(integrity)
+        result = place._place(self.inputDictionary)       
+        correct = {'board': '[0,0,0,0,0,0,0,0,2,9,0,0,0,0,9,2,0,0,0,9,2,2,2,0,0,2,0,0,0,0,0,0,0,0,0,0]', 
+                   'integrity': '3fb195ee12f9815782f334fd53e78b4ab5c00f830d1f0f54839fa82d09085165', 
+                   'status': 'ok'}
+        self.assertEqual(correct, result)
         
         
 #     def test300_011(self):  
