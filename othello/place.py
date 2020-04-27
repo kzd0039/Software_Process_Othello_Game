@@ -180,7 +180,6 @@ def _place(parms):
     return result 
         
     
-    
 def isValidTokens(token):
     #validate tokens, the must of token must be integer and in the range[0,9]
     ERROR01 = 'error: light/blank/dark non-integer'
