@@ -466,7 +466,7 @@ class statusTest(unittest.TestCase):
         self.setDark('2')
         self.setBlank('X')
         self.setLocation('2:3')
-        board = '[X,X,X,X,X,X,X,X,X,X,X,X,X,X,1,2,0,0,0,0,2,1,X,X,X,X,X,X,X,X,X,X,X,X,X,X]'
+        board = '[X,X,X,X,X,X,X,X,X,X,X,X,X,X,1,2,X,X,X,X,2,1,X,X,X,X,X,X,X,X,X,X,X,X,X,X]'
         self.setBoard(board)
         integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
         self.setIntegrity(integrity)      
@@ -474,14 +474,19 @@ class statusTest(unittest.TestCase):
         result = place._place(self.inputDictionary)
         self.assertEqual(result, correct)
 
-#          
-#     def test300_921BlankNonInteger(self):
-#         self.setOperation('place')
-#         self.setBlank('1.5')
-#         correct = {'status': self.error1}
-#         result = place._place(self.inputDictionary)
-#          
-#         self.assertEqual(result, correct)
+          
+    def test300_921BlankNonInteger(self):
+        self.setOperation('place')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('1.5')
+        board = '[1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1,2,1.5,1.5,1.5,1.5,2,1,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5]'
+        self.setBoard(board)
+        integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
+        self.setIntegrity(integrity) 
+        correct = {'status': self.error1}
+        result = place._place(self.inputDictionary) 
+        self.assertEqual(result, correct)
 #          
 #     def test300_922BlankOutOfUpperBound(self):
 #         self.setOperation('place')
