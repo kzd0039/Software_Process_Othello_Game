@@ -286,7 +286,7 @@ class statusTest(unittest.TestCase):
         self.setLocation('8:8')
         board = '[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0]'
         self.setBoard(board)
-        integrity = 'bc2cef741e4537e4b78559f9ed8d4848216ebe3e56676ff3bf66dfc03db1a857'
+        integrity = 'd3c64bc0b9471cf272072140ee7f4a26ca31aed3feb789308c173b831913c495'
         self.setIntegrity(integrity)
         result = place._place(self.inputDictionary)
         correct = {'board': '[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2]', 
