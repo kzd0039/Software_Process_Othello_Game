@@ -322,16 +322,23 @@ class statusTest(unittest.TestCase):
         result = place._place(self.inputDictionary)       
         correct = {'status': self.error1}
         result = place._place(self.inputDictionary)
-         
         self.assertEqual(result, correct)
-#         
-#     def test300_901LightNonInteger(self):
-#         self.setOperation('place')
-#         self.setLight('1.5')
-#         correct = {'status': self.error1}
-#         result = place._place(self.inputDictionary)
-#          
-#         self.assertEqual(result, correct)
+        
+         
+    def test300_901LightNonInteger(self):
+        self.setOperation('place')
+        self.setLight('1.5')
+        self.setDark('2')
+        self.setBlank('0')
+        self.setLocation('2:3')
+        board = '[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.5,2,0,0,0,0,2,1.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0]'
+        self.setBoard(board)
+        integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
+        self.setIntegrity(integrity)
+        result = place._place(self.inputDictionary)       
+        correct = {'status': self.error1}
+        result = place._place(self.inputDictionary)
+        self.assertEqual(result, correct)
 #          
 #     def test300_902LightOutOfUpperBound(self):
 #         self.setOperation('place')
