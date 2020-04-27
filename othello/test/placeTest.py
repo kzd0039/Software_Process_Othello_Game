@@ -262,6 +262,21 @@ class statusTest(unittest.TestCase):
                    'status': 'end:59/5'}
         self.assertEqual(correct, result)
         
+    def test300_043(self):
+        self.setOperation('place')
+        self.setLight('3')
+        self.setDark('4')
+        self.setBlank('5')
+        self.setLocation('10:10')
+        board = '[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5]'
+        self.setBoard(board)
+        integrity = 'cc988c1e4c1a94995d51cb0cd1aab27ba3861afa9088049cb6ddf677514980e1 '
+        self.setIntegrity(integrity)
+        result = place._place(self.inputDictionary)
+        correct = {'board': '[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,4]', 
+                   'integrity': '5b903926f9fcf90eb229fd30992436de4a4895806bf5b6f13f24921cbf810a01', 
+                   'status': 'end:93/7'}
+        self.assertEqual(correct, result)
         
         
         
