@@ -277,7 +277,22 @@ class statusTest(unittest.TestCase):
                    'integrity': '5b903926f9fcf90eb229fd30992436de4a4895806bf5b6f13f24921cbf810a01', 
                    'status': 'end:93/7'}
         self.assertEqual(correct, result)
-        
+    
+    def test300_051(self):
+        self.setOperation('place')
+        self.setLight('2')
+        self.setDark('1')
+        self.setBlank('0')
+        self.setLocation('8:8')
+        board = '[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0]'
+        self.setBoard(board)
+        integrity = 'bc2cef741e4537e4b78559f9ed8d4848216ebe3e56676ff3bf66dfc03db1a857'
+        self.setIntegrity(integrity)
+        result = place._place(self.inputDictionary)
+        correct = {'board': '[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2]', 
+                   'integrity': '1bcb08a73744b1bd078948fe7c29d249d49034ca92dce421d06d73cdcdeb936a', 
+                   'status': 'end:5/59'}
+        self.assertEqual(correct, result)
         
         
         
