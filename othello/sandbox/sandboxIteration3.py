@@ -211,7 +211,7 @@ output_board = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]
+                0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 output_integrity = integrityCalculation(output_board, light, dark, blank, size, dark)
 print('happy013','\n',
       'input_integrity:'+input_integrity,'\n',
