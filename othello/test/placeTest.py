@@ -563,26 +563,18 @@ class statusTest(unittest.TestCase):
         self.assertEqual(result, correct)
         
         
-#         self.setOperation('place')
-#         self.setLight('1')
-#         self.setDark('1')
-#         self.setBlank('0')
-#         correct = {'status': self.error3}
-#         result = place._place(self.inputDictionary)
-#          
-#         self.assertEqual(result, correct)  
-#      
-#     def test300_940BoardMissing(self):
-#         self.setOperation('place')
-#         self.setLight('1')
-#         self.setDark('2')
-#         self.setBlank('3')
-#         integrity = '1e3f8bb2d56c5b4483c9f3dccf7bc16d339534a98020e9a28383aaa219f3e64d'
-#         self.setIntegrity(integrity)
-#       
-#         correct = {'status': self.error4}
-#         result = place._place(self.inputDictionary)
-#         self.assertEqual(correct, result)   
+      
+    def test300_940BoardMissing(self):
+        self.setOperation('place')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('0')
+        self.setLocation('2:3')
+        integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
+        self.setIntegrity(integrity)
+        result = place._place(self.inputDictionary)       
+        correct = {'status': self.error4}
+        self.assertEqual(result, correct)
 #           
 #     def test300_941BoardNull(self):
 #         self.setOperation('place')
