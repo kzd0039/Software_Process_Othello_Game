@@ -223,7 +223,7 @@ def isValidBoard(tokens, input_board):
     blank = str(tokens['blank'])
     
     count = collections.Counter(board)
-    if count[light] + count[dark] + count[blank] != len_board:
+    if set(count.keys()) != set([light, dark, blank]):
         return {'status': ERROR05}
     
     return board
