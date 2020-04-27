@@ -501,14 +501,21 @@ class statusTest(unittest.TestCase):
         correct = {'status': self.error2}
         result = place._place(self.inputDictionary)
         self.assertEqual(result, correct)
-#         self.setOperation('place')
-#         self.setBlank('10')
-#         correct = {'status': self.error2}
-#         result = place._place(self.inputDictionary)
-#          
-#         self.assertEqual(result, correct) 
-#           
-#     def test300_923BlankOutOfLowerBound(self):
+
+           
+    def test300_923BlankOutOfLowerBound(self):
+        self.setOperation('place')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('10')
+        self.setLocation('2:3')
+        board = '[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,2,-1,-1,-1,-1,2,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]'
+        self.setBoard(board)
+        integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
+        self.setIntegrity(integrity)      
+        correct = {'status': self.error2}
+        result = place._place(self.inputDictionary)
+        self.assertEqual(result, correct)
 #         self.setOperation('place')
 #         self.setBlank('-1')
 #         correct = {'status': self.error2}
