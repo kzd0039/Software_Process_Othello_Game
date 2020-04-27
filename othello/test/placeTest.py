@@ -309,13 +309,21 @@ class statusTest(unittest.TestCase):
         self.assertEqual(correct, result)
         
         #sad path  
-#     def test300_900LightNonInteger(self):
-#         self.setOperation('place')
-#         self.setLight('X')
-#         correct = {'status': self.error1}
-#         result = place._place(self.inputDictionary)
-#         
-#         self.assertEqual(result, correct)
+    def test300_900LightNonInteger(self):
+        self.setOperation('place')
+        self.setLight('X')
+        self.setDark('2')
+        self.setBlank('0')
+        self.setLocation('2:3')
+        board = '[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]'
+        self.setBoard(board)
+        integrity = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
+        self.setIntegrity(integrity)
+        result = place._place(self.inputDictionary)       
+        correct = {'status': self.error1}
+        result = place._place(self.inputDictionary)
+         
+        self.assertEqual(result, correct)
 #         
 #     def test300_901LightNonInteger(self):
 #         self.setOperation('place')
