@@ -733,18 +733,18 @@ class statusTest(unittest.TestCase):
         correct = {'status': self.error14}
         result = place._place(self.inputDictionary)
         self.assertEqual(correct, result)  
-#  
-#     def test300_960IntegrityMissing(self):
-#         self.setOperation('place')
-#         self.setLight('1')
-#         self.setDark('2')
-#         self.setBlank('3')
-#         board='[3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,2,3,3,3,3,2,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3]'
-#         self.setBoard(board)
-#         self.setLocation('2:3')
-#         correct = {'status': self.error11}
-#         result = place._place(self.inputDictionary)
-#         self.assertEqual(correct, result)  
+  
+    def test300_960IntegrityMissing(self):
+        self.setOperation('place')
+        self.setLight('1')
+        self.setDark('2')
+        self.setBlank('3')
+        board='[3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,2,3,3,3,3,2,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3]'
+        self.setBoard(board)
+        self.setLocation('2:3')
+        correct = {'status': self.error11}
+        result = place._place(self.inputDictionary)
+        self.assertEqual(correct, result)  
 #      
 #     def test300_961IntegrityNull(self):
 #         self.setOperation('place')
